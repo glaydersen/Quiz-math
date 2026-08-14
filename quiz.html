@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Multiplicação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #ff6347;
+        }
+        .question {
+            font-size: 1.2em;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz de Multiplicação</h1>
+        <div id="quiz-area">
+            <div class="question" id="question-text"></div>
+            <input type="number" id="answer" placeholder="Sua resposta">
+            <br>
+            <button onclick="checkAnswer()">Responder</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const questions = [
+            { text: "Quanto é 5 vezes 8?", answer: 40 },
+            { text: "Quanto é 7 vezes 6?", answer: 42 },
+            { text: "Quanto é 9 vezes 9?", answer: 81 },
+            { text: "Uma bicicleta tem 2 rodas. Se 5 amigos estão cada um com uma bicicleta, quantas rodas temos no total?", answer: 10 },
+            { text: "Em uma caixa cabem 6 maçãs. Quantas maçãs cabem em 4 caixas?", answer: 24 },
+            { text: "Se um polvo tem 8 tentáculos, quantos tentáculos têm 3 polvos?", answer: 24 }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function showQuestion() {
+            if (currentQuestion < questions.length) {
+                document.getElementById('question-text').innerText = questions[currentQuestion].text;
+                document.getElementById('answer').value = '';
+            } else {
+                document.getElementById('quiz-area').style.display = 'none';
+                document.getElementById('result').innerText = `Você terminou! Acertou ${score} de ${questions.length} perguntas.`;
+            }
+        }
+
+        function checkAnswer() {
+            const userAnswer = parseInt(document.getElementById('answer').value);
+            if (userAnswer === questions[currentQuestion].answer) {
+                score++;
+            }
+            currentQuestion++;
+            showQuestion();
+        }
+
+        showQuestion();
+    </script>
+</body>
+</html>
