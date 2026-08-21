@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz de Português - 9 anos</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f4f7fb;color:#1f2937}
+.wrap{max-width:850px;margin:auto;padding:16px}
+header{background:#1d4ed8;color:white;padding:24px;border-radius:18px}
+header h1{margin:0 0 6px}
+.progress{height:12px;background:#dbeafe;border-radius:999px;margin:18px 0;overflow:hidden}
+#prog{height:100%;width:0;background:#22c55e}
+.qcard{display:none;background:white;border:1px solid #dbe3ef;border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.qcard.active{display:block}
+.topic{display:inline-block;background:#e0e7ff;color:#3730a3;padding:6px 10px;border-radius:999px;font-weight:bold}
+.question{font-size:21px;line-height:1.4}
+.options{display:grid;gap:10px}
+.option{text-align:left;padding:14px;border:1px solid #cbd5e1;border-radius:12px;background:white;font-size:17px}
+.option.correct{background:#f0fdf4;border-color:#22c55e}
+.option.wrong{background:#fef2f2;border-color:#ef4444}
+.feedback{margin-top:14px;padding:12px;border-radius:10px;display:none}
+.feedback.ok{display:block;background:#f0fdf4;color:#166534}
+.feedback.bad{display:block;background:#fef2f2;color:#991b1b}
+.next{margin-top:16px;float:right;padding:12px 18px;border:0;border-radius:10px;background:#2563eb;color:white;font-weight:bold}
+.next:disabled{opacity:.45}
+#result{display:none;background:white;border-radius:18px;padding:25px;text-align:center}
+.score{font-size:52px;font-weight:bold;color:#2563eb}
+.small{color:#64748b}
+@media(max-width:600px){.question{font-size:18px} .option{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Quiz de Português</h1>
+<p>Preparação para a prova • 9 anos</p>
+</header>
+<div class="progress"><div id="prog"></div></div>
+<div id="status">Acertos: 0</div>
+
+    <section class="qcard active" id="q0">
+      <div class="topic">Diminutivo</div>
+      <h2>Questão 1 de 30</h2>
+      <p class="question">Qual é o diminutivo correto de “animal”?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(0,0,this)"><b>A)</b> animalinho</button><button class="option" type="button" onclick="answer(0,1,this)"><b>B)</b> animalzinho</button><button class="option" type="button" onclick="answer(0,2,this)"><b>C)</b> animazinho</button><button class="option" type="button" onclick="answer(0,3,this)"><b>D)</b> animalzão</button></div>
+      <div class="feedback" id="fb0"></div>
+      <button class="next" id="next0" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q1">
+      <div class="topic">Diminutivo</div>
+      <h2>Questão 2 de 30</h2>
+      <p class="question">Qual palavra está corretamente no diminutivo de “mesa”?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(1,0,this)"><b>A)</b> mezinha</button><button class="option" type="button" onclick="answer(1,1,this)"><b>B)</b> mesinha</button><button class="option" type="button" onclick="answer(1,2,this)"><b>C)</b> messinha</button><button class="option" type="button" onclick="answer(1,3,this)"><b>D)</b> mesazinha</button></div>
+      <div class="feedback" id="fb1"></div>
+      <button class="next" id="next1" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q2">
+      <div class="topic">Diminutivo</div>
+      <h2>Questão 3 de 30</h2>
+      <p class="question">Em “mãezinha”, o diminutivo indica principalmente:</p>
+      <div class="options"><button class="option" type="button" onclick="answer(2,0,this)"><b>A)</b> tamanho</button><button class="option" type="button" onclick="answer(2,1,this)"><b>B)</b> carinho</button><button class="option" type="button" onclick="answer(2,2,this)"><b>C)</b> desprezo</button><button class="option" type="button" onclick="answer(2,3,this)"><b>D)</b> aumento</button></div>
+      <div class="feedback" id="fb2"></div>
+      <button class="next" id="next2" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q3">
+      <div class="topic">Diminutivo</div>
+      <h2>Questão 4 de 30</h2>
+      <p class="question">Qual é o diminutivo correto de “lugar”?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(3,0,this)"><b>A)</b> lugarinho</button><button class="option" type="button" onclick="answer(3,1,this)"><b>B)</b> lugarzinho</button><button class="option" type="button" onclick="answer(3,2,this)"><b>C)</b> lugazinho</button><button class="option" type="button" onclick="answer(3,3,this)"><b>D)</b> lugarão</button></div>
+      <div class="feedback" id="fb3"></div>
+      <button class="next" id="next3" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q4">
+      <div class="topic">Diminutivo</div>
+      <h2>Questão 5 de 30</h2>
+      <p class="question">Qual opção está no grau normal?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(4,0,this)"><b>A)</b> garrafinha</button><button class="option" type="button" onclick="answer(4,1,this)"><b>B)</b> batatinha</button><button class="option" type="button" onclick="answer(4,2,this)"><b>C)</b> sofá</button><button class="option" type="button" onclick="answer(4,3,this)"><b>D)</b> faquinha</button></div>
+      <div class="feedback" id="fb4"></div>
+      <button class="next" id="next4" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q5">
+      <div class="topic">Aumentativo</div>
+      <h2>Questão 6 de 30</h2>
+      <p class="question">Qual é o aumentativo de “gato”?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(5,0,this)"><b>A)</b> gatinho</button><button class="option" type="button" onclick="answer(5,1,this)"><b>B)</b> gatão</button><button class="option" type="button" onclick="answer(5,2,this)"><b>C)</b> gatozinho</button><button class="option" type="button" onclick="answer(5,3,this)"><b>D)</b> gato pequeno</button></div>
+      <div class="feedback" id="fb5"></div>
+      <button class="next" id="next5" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q6">
+      <div class="topic">Aumentativo</div>
+      <h2>Questão 7 de 30</h2>
+      <p class="question">Na frase “Ah, amigão!”, o aumentativo indica principalmente:</p>
+      <div class="options"><button class="option" type="button" onclick="answer(6,0,this)"><b>A)</b> carinho</button><button class="option" type="button" onclick="answer(6,1,this)"><b>B)</b> tamanho</button><button class="option" type="button" onclick="answer(6,2,this)"><b>C)</b> medo</button><button class="option" type="button" onclick="answer(6,3,this)"><b>D)</b> diminuição</button></div>
+      <div class="feedback" id="fb6"></div>
+      <button class="next" id="next6" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q7">
+      <div class="topic">Aumentativo</div>
+      <h2>Questão 8 de 30</h2>
+      <p class="question">Qual expressão indica aumento de tamanho usando adjetivo?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(7,0,this)"><b>A)</b> boca pequena</button><button class="option" type="button" onclick="answer(7,1,this)"><b>B)</b> boca enorme</button><button class="option" type="button" onclick="answer(7,2,this)"><b>C)</b> boquinha</button><button class="option" type="button" onclick="answer(7,3,this)"><b>D)</b> bocarra</button></div>
+      <div class="feedback" id="fb7"></div>
+      <button class="next" id="next7" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q8">
+      <div class="topic">Aumentativo</div>
+      <h2>Questão 9 de 30</h2>
+      <p class="question">Qual palavra é aumentativo de “cabeça”?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(8,0,this)"><b>A)</b> cabecinha</button><button class="option" type="button" onclick="answer(8,1,this)"><b>B)</b> cabeçona</button><button class="option" type="button" onclick="answer(8,2,this)"><b>C)</b> cabeceira</button><button class="option" type="button" onclick="answer(8,3,this)"><b>D)</b> cabeça</button></div>
+      <div class="feedback" id="fb8"></div>
+      <button class="next" id="next8" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q9">
+      <div class="topic">Aumentativo</div>
+      <h2>Questão 10 de 30</h2>
+      <p class="question">A palavra “palavrão” pode indicar:</p>
+      <div class="options"><button class="option" type="button" onclick="answer(9,0,this)"><b>A)</b> apenas tamanho</button><button class="option" type="button" onclick="answer(9,1,this)"><b>B)</b> desprezo ou crítica, dependendo do contexto</button><button class="option" type="button" onclick="answer(9,2,this)"><b>C)</b> sempre carinho</button><button class="option" type="button" onclick="answer(9,3,this)"><b>D)</b> apenas diminuição</button></div>
+      <div class="feedback" id="fb9"></div>
+      <button class="next" id="next9" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q10">
+      <div class="topic">Diário pessoal</div>
+      <h2>Questão 11 de 30</h2>
+      <p class="question">Qual elemento costuma aparecer em um diário pessoal?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(10,0,this)"><b>A)</b> data</button><button class="option" type="button" onclick="answer(10,1,this)"><b>B)</b> lista de ingredientes</button><button class="option" type="button" onclick="answer(10,2,this)"><b>C)</b> placar de jogo</button><button class="option" type="button" onclick="answer(10,3,this)"><b>D)</b> tabela de preços</button></div>
+      <div class="feedback" id="fb10"></div>
+      <button class="next" id="next10" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q11">
+      <div class="topic">Diário pessoal</div>
+      <h2>Questão 12 de 30</h2>
+      <p class="question">Um diário pessoal geralmente registra:</p>
+      <div class="options"><button class="option" type="button" onclick="answer(11,0,this)"><b>A)</b> acontecimentos, pensamentos e sentimentos</button><button class="option" type="button" onclick="answer(11,1,this)"><b>B)</b> somente notícias</button><button class="option" type="button" onclick="answer(11,2,this)"><b>C)</b> apenas receitas</button><button class="option" type="button" onclick="answer(11,3,this)"><b>D)</b> somente regras</button></div>
+      <div class="feedback" id="fb11"></div>
+      <button class="next" id="next11" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q12">
+      <div class="topic">Diário pessoal</div>
+      <h2>Questão 13 de 30</h2>
+      <p class="question">Qual início combina melhor com um diário pessoal?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(12,0,this)"><b>A)</b> Prezados clientes,</button><button class="option" type="button" onclick="answer(12,1,this)"><b>B)</b> Querido diário,</button><button class="option" type="button" onclick="answer(12,2,this)"><b>C)</b> Senhores passageiros,</button><button class="option" type="button" onclick="answer(12,3,this)"><b>D)</b> Modo de preparo:</button></div>
+      <div class="feedback" id="fb12"></div>
+      <button class="next" id="next12" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q13">
+      <div class="topic">Diário pessoal</div>
+      <h2>Questão 14 de 30</h2>
+      <p class="question">A linguagem de um diário pessoal costuma ser:</p>
+      <div class="options"><button class="option" type="button" onclick="answer(13,0,this)"><b>A)</b> informal e pessoal</button><button class="option" type="button" onclick="answer(13,1,this)"><b>B)</b> sempre científica</button><button class="option" type="button" onclick="answer(13,2,this)"><b>C)</b> sempre jurídica</button><button class="option" type="button" onclick="answer(13,3,this)"><b>D)</b> apenas publicitária</button></div>
+      <div class="feedback" id="fb13"></div>
+      <button class="next" id="next13" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q14">
+      <div class="topic">Diário pessoal</div>
+      <h2>Questão 15 de 30</h2>
+      <p class="question">Qual trecho parece mais com um diário pessoal?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(14,0,this)"><b>A)</b> 20 de agosto. Hoje brinquei com meus amigos e fiquei muito feliz.</button><button class="option" type="button" onclick="answer(14,1,this)"><b>B)</b> Misture dois ovos com farinha.</button><button class="option" type="button" onclick="answer(14,2,this)"><b>C)</b> Promoção válida até amanhã.</button><button class="option" type="button" onclick="answer(14,3,this)"><b>D)</b> O ônibus sai às 8h.</button></div>
+      <div class="feedback" id="fb14"></div>
+      <button class="next" id="next14" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q15">
+      <div class="topic">Substantivo na frase</div>
+      <h2>Questão 16 de 30</h2>
+      <p class="question">Na frase “O papagaio falou o nome de Serafina”, quem pratica a ação?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(15,0,this)"><b>A)</b> papagaio</button><button class="option" type="button" onclick="answer(15,1,this)"><b>B)</b> nome</button><button class="option" type="button" onclick="answer(15,2,this)"><b>C)</b> Serafina</button><button class="option" type="button" onclick="answer(15,3,this)"><b>D)</b> falou</button></div>
+      <div class="feedback" id="fb15"></div>
+      <button class="next" id="next15" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q16">
+      <div class="topic">Substantivo na frase</div>
+      <h2>Questão 17 de 30</h2>
+      <p class="question">Na frase “A menina chutou a bola”, qual palavra indica a ação?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(16,0,this)"><b>A)</b> menina</button><button class="option" type="button" onclick="answer(16,1,this)"><b>B)</b> chutou</button><button class="option" type="button" onclick="answer(16,2,this)"><b>C)</b> bola</button><button class="option" type="button" onclick="answer(16,3,this)"><b>D)</b> a</button></div>
+      <div class="feedback" id="fb16"></div>
+      <button class="next" id="next16" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q17">
+      <div class="topic">Substantivo na frase</div>
+      <h2>Questão 18 de 30</h2>
+      <p class="question">Na frase “Os pássaros habitam florestas”, quem pratica a ação?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(17,0,this)"><b>A)</b> florestas</button><button class="option" type="button" onclick="answer(17,1,this)"><b>B)</b> habitam</button><button class="option" type="button" onclick="answer(17,2,this)"><b>C)</b> pássaros</button><button class="option" type="button" onclick="answer(17,3,this)"><b>D)</b> os</button></div>
+      <div class="feedback" id="fb17"></div>
+      <button class="next" id="next17" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q18">
+      <div class="topic">Substantivo na frase</div>
+      <h2>Questão 19 de 30</h2>
+      <p class="question">Na frase “O jogador chutou a bola”, qual é o substantivo que indica quem pratica a ação?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(18,0,this)"><b>A)</b> jogador</button><button class="option" type="button" onclick="answer(18,1,this)"><b>B)</b> chutou</button><button class="option" type="button" onclick="answer(18,2,this)"><b>C)</b> bola</button><button class="option" type="button" onclick="answer(18,3,this)"><b>D)</b> a</button></div>
+      <div class="feedback" id="fb18"></div>
+      <button class="next" id="next18" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q19">
+      <div class="topic">Substantivo na frase</div>
+      <h2>Questão 20 de 30</h2>
+      <p class="question">Na frase “Minha mãe comemorou o aniversário”, quem pratica a ação?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(19,0,this)"><b>A)</b> aniversário</button><button class="option" type="button" onclick="answer(19,1,this)"><b>B)</b> minha</button><button class="option" type="button" onclick="answer(19,2,this)"><b>C)</b> mãe</button><button class="option" type="button" onclick="answer(19,3,this)"><b>D)</b> comemorou</button></div>
+      <div class="feedback" id="fb19"></div>
+      <button class="next" id="next19" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q20">
+      <div class="topic">Ortografia G ou GU</div>
+      <h2>Questão 21 de 30</h2>
+      <p class="question">Complete corretamente: “O caminhão foi levado pelo □incho.”</p>
+      <div class="options"><button class="option" type="button" onclick="answer(20,0,this)"><b>A)</b> g</button><button class="option" type="button" onclick="answer(20,1,this)"><b>B)</b> gu</button><button class="option" type="button" onclick="answer(20,2,this)"><b>C)</b> j</button><button class="option" type="button" onclick="answer(20,3,this)"><b>D)</b> qu</button></div>
+      <div class="feedback" id="fb20"></div>
+      <button class="next" id="next20" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q21">
+      <div class="topic">Ortografia G ou GU</div>
+      <h2>Questão 22 de 30</h2>
+      <p class="question">Qual palavra está escrita corretamente?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(21,0,this)"><b>A)</b> fogete</button><button class="option" type="button" onclick="answer(21,1,this)"><b>B)</b> foguete</button><button class="option" type="button" onclick="answer(21,2,this)"><b>C)</b> foquete</button><button class="option" type="button" onclick="answer(21,3,this)"><b>D)</b> fogguete</button></div>
+      <div class="feedback" id="fb21"></div>
+      <button class="next" id="next21" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q22">
+      <div class="topic">Ortografia G ou GU</div>
+      <h2>Questão 23 de 30</h2>
+      <p class="question">Qual palavra está escrita corretamente?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(22,0,this)"><b>A)</b> gerra</button><button class="option" type="button" onclick="answer(22,1,this)"><b>B)</b> guerra</button><button class="option" type="button" onclick="answer(22,2,this)"><b>C)</b> güerra</button><button class="option" type="button" onclick="answer(22,3,this)"><b>D)</b> querra</button></div>
+      <div class="feedback" id="fb22"></div>
+      <button class="next" id="next22" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q23">
+      <div class="topic">Ortografia G ou GU</div>
+      <h2>Questão 24 de 30</h2>
+      <p class="question">Complete corretamente: “A prefeitura divul□ou a notícia.”</p>
+      <div class="options"><button class="option" type="button" onclick="answer(23,0,this)"><b>A)</b> g</button><button class="option" type="button" onclick="answer(23,1,this)"><b>B)</b> gu</button><button class="option" type="button" onclick="answer(23,2,this)"><b>C)</b> j</button><button class="option" type="button" onclick="answer(23,3,this)"><b>D)</b> qu</button></div>
+      <div class="feedback" id="fb23"></div>
+      <button class="next" id="next23" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q24">
+      <div class="topic">Ortografia G ou GU</div>
+      <h2>Questão 25 de 30</h2>
+      <p class="question">Em qual palavra o grupo GU mantém o som forte do G antes de E ou I?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(24,0,this)"><b>A)</b> guia</button><button class="option" type="button" onclick="answer(24,1,this)"><b>B)</b> gato</button><button class="option" type="button" onclick="answer(24,2,this)"><b>C)</b> gola</button><button class="option" type="button" onclick="answer(24,3,this)"><b>D)</b> garrafa</button></div>
+      <div class="feedback" id="fb24"></div>
+      <button class="next" id="next24" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q25">
+      <div class="topic">Divisão silábica</div>
+      <h2>Questão 26 de 30</h2>
+      <p class="question">Quantas sílabas tem a palavra “passeio”?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(25,0,this)"><b>A)</b> 1</button><button class="option" type="button" onclick="answer(25,1,this)"><b>B)</b> 2</button><button class="option" type="button" onclick="answer(25,2,this)"><b>C)</b> 3</button><button class="option" type="button" onclick="answer(25,3,this)"><b>D)</b> 4</button></div>
+      <div class="feedback" id="fb25"></div>
+      <button class="next" id="next25" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q26">
+      <div class="topic">Divisão silábica</div>
+      <h2>Questão 27 de 30</h2>
+      <p class="question">A palavra “excelente” é:</p>
+      <div class="options"><button class="option" type="button" onclick="answer(26,0,this)"><b>A)</b> monossílaba</button><button class="option" type="button" onclick="answer(26,1,this)"><b>B)</b> dissílaba</button><button class="option" type="button" onclick="answer(26,2,this)"><b>C)</b> trissílaba</button><button class="option" type="button" onclick="answer(26,3,this)"><b>D)</b> polissílaba</button></div>
+      <div class="feedback" id="fb26"></div>
+      <button class="next" id="next26" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q27">
+      <div class="topic">Divisão silábica</div>
+      <h2>Questão 28 de 30</h2>
+      <p class="question">Qual é a divisão silábica correta de “açougue”?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(27,0,this)"><b>A)</b> a-çou-gue</button><button class="option" type="button" onclick="answer(27,1,this)"><b>B)</b> a-ço-u-gue</button><button class="option" type="button" onclick="answer(27,2,this)"><b>C)</b> a-çou-gu-e</button><button class="option" type="button" onclick="answer(27,3,this)"><b>D)</b> aç-ou-gue</button></div>
+      <div class="feedback" id="fb27"></div>
+      <button class="next" id="next27" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q28">
+      <div class="topic">Divisão silábica</div>
+      <h2>Questão 29 de 30</h2>
+      <p class="question">Qual palavra é dissílaba?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(28,0,this)"><b>A)</b> mês</button><button class="option" type="button" onclick="answer(28,1,this)"><b>B)</b> neve</button><button class="option" type="button" onclick="answer(28,2,this)"><b>C)</b> passeio</button><button class="option" type="button" onclick="answer(28,3,this)"><b>D)</b> excelente</button></div>
+      <div class="feedback" id="fb28"></div>
+      <button class="next" id="next28" type="button" onclick="nextQuestion()" disabled>
+        Próxima questão
+      </button>
+    </section>
+    <section class="qcard " id="q29">
+      <div class="topic">Divisão silábica</div>
+      <h2>Questão 30 de 30</h2>
+      <p class="question">Qual palavra é trissílaba?</p>
+      <div class="options"><button class="option" type="button" onclick="answer(29,0,this)"><b>A)</b> mês</button><button class="option" type="button" onclick="answer(29,1,this)"><b>B)</b> neve</button><button class="option" type="button" onclick="answer(29,2,this)"><b>C)</b> passeio</button><button class="option" type="button" onclick="answer(29,3,this)"><b>D)</b> excelente</button></div>
+      <div class="feedback" id="fb29"></div>
+      <button class="next" id="next29" type="button" onclick="nextQuestion()" disabled>
+        Ver resultado
+      </button>
+    </section>
+<section id="result">
+<h2>Resultado final</h2>
+<div class="score" id="scoreFinal"></div>
+<p id="message"></p>
+<button class="next" style="float:none" onclick="location.reload()">Refazer o quiz</button>
+</section>
+</div>
+
+<script>
+const answers=[1, 1, 1, 1, 2, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2, 1, 1, 1, 0, 0, 2, 3, 0, 1, 2];
+const explanations=["O diminutivo esperado é “animalzinho”.", "“Mesa” forma “mesinha”, mantendo o s.", "“Mãezinha” é um diminutivo afetivo, usado para demonstrar carinho.", "A forma trabalhada no conteúdo é “lugarzinho”.", "“Sofá” está no grau normal; as outras palavras estão no diminutivo.", "A terminação -ão forma “gatão”.", "“Amigão” pode expressar carinho ou proximidade.", "“Boca enorme” usa um adjetivo para indicar tamanho grande.", "“Cabeçona” é aumentativo de cabeça.", "O aumentativo também pode indicar desprezo ou crítica, conforme o contexto.", "O diário costuma registrar a data do acontecimento.", "O diário é um registro pessoal de fatos, pensamentos e sentimentos.", "“Querido diário” é uma forma comum e afetiva de iniciar esse gênero.", "Por ser íntimo e pessoal, o diário costuma usar linguagem informal.", "O trecho apresenta data, acontecimento e sentimento pessoal.", "O papagaio é quem realiza a ação de falar.", "“Chutou” é o verbo que indica a ação.", "Os pássaros são quem pratica a ação de habitar.", "“Jogador” é o substantivo que indica quem pratica a ação.", "A mãe é quem pratica a ação de comemorar.", "A palavra correta é “guincho”.", "“Foguete” é escrito com GU.", "A forma correta é “guerra”.", "A palavra correta é “divulgou”.", "Em “guia”, o grupo GU mantém o som forte do g antes de i.", "Passeio se separa em pas-sei-o: 3 sílabas.", "Ex-ce-len-te tem 4 sílabas, portanto é polissílaba.", "A divisão correta é a-çou-gue.", "Ne-ve tem duas sílabas, por isso é dissílaba.", "Pas-sei-o tem três sílabas, por isso é trissílaba."];
+let current=0, score=0, locked=false;
+
+function answer(qi, oi, el){
+ if(locked || qi!==current) return;
+ locked=true;
+ const card=document.getElementById('q'+qi);
+ const buttons=card.querySelectorAll('.option');
+ buttons.forEach((b,j)=>{ b.disabled=true; if(j===answers[qi]) b.classList.add('correct'); });
+ const fb=document.getElementById('fb'+qi);
+ if(oi===answers[qi]){
+   score++;
+   fb.className='feedback ok';
+   fb.textContent='Muito bem! '+explanations[qi];
+ } else {
+   el.classList.add('wrong');
+   fb.className='feedback bad';
+   fb.textContent='Quase! '+explanations[qi];
+ }
+ document.getElementById('status').textContent='Acertos: '+score;
+ document.getElementById('next'+qi).disabled=false;
+}
+
+function nextQuestion(){
+ document.getElementById('q'+current).classList.remove('active');
+ current++;
+ locked=false;
+ document.getElementById('prog').style.width=((current/answers.length)*100)+'%';
+ if(current<answers.length){
+   document.getElementById('q'+current).classList.add('active');
+   window.scrollTo(0,0);
+ } else {
+   const pct=Math.round(score/answers.length*100);
+   document.getElementById('result').style.display='block';
+   document.getElementById('scoreFinal').textContent=score+'/'+answers.length;
+   let msg='Continue praticando!';
+   if(pct>=90) msg='Excelente! Você está muito bem preparado(a)!';
+   else if(pct>=75) msg='Muito bom! Falta pouco para dominar tudo.';
+   else if(pct>=60) msg='Bom trabalho! Vale revisar alguns pontos.';
+   document.getElementById('message').textContent='Você acertou '+pct+'% das questões. '+msg;
+   window.scrollTo(0,0);
+ }
+}
+</script>
+</body>
+</html>
