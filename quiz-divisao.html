@@ -148,3 +148,1356 @@ button{font-family:inherit}
 
 .campos{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:12px}
 .campo{display:flex;align-items:center;gap:8px;background:#fff;border:4px solid #e5e7eb;
+  border-radius:18px;padding:8px 14px;font-size:18px;font-weight:bold}
+.campo input{
+  width:88px;font-family:inherit;font-size:24px;font-weight:bold;text-align:center;
+  border:none;border-bottom:4px dashed var(--roxo2);background:transparent;color:var(--roxo);
+  outline:none;padding:2px 0;
+}
+.campo.ok{border-color:var(--verde);background:#dcfce7}
+.campo.nok{border-color:var(--vermelho);background:#fee2e2;animation:tremer .35s}
+
+/* feedback */
+.feedback{margin-top:14px;border-radius:20px;padding:14px 16px;font-size:17px;line-height:1.5;display:none}
+.feedback.show{display:block;animation:sobe .3s}
+@keyframes sobe{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.feedback.bom{background:#dcfce7;border:4px solid var(--verde)}
+.feedback.ruim{background:#fef3c7;border:4px solid var(--laranja)}
+.feedback b{color:var(--roxo)}
+.feedback .chefe{font-size:32px;float:left;margin-right:10px}
+
+/* barra de progresso da fase */
+.passos{display:flex;gap:6px;margin-bottom:14px}
+.passos i{flex:1;height:10px;border-radius:999px;background:#e5e7eb}
+.passos i.on{background:linear-gradient(90deg,var(--roxo2),var(--rosa))}
+.passos i.done{background:var(--verde)}
+
+/* ===================== ARRASTAR E SOLTAR ===================== */
+.arrastando{position:fixed;z-index:1000;pointer-events:none;margin:0;
+  transform:scale(1.3) rotate(-7deg);opacity:.95;
+  filter:drop-shadow(0 10px 12px rgba(0,0,0,.35))}
+.fantasma{opacity:.25}
+
+/* ===================== DISTRIBUIR (repartir) ===================== */
+.pool{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;background:#fff7ed;
+  border:4px dashed var(--laranja);border-radius:20px;padding:12px;min-height:80px;margin-bottom:6px;
+  transition:.12s}
+.pool.alvo{background:#ffedd5;border-color:#ea580c;transform:scale(1.02)}
+.pool:empty::after{content:"cesto vazio ✨";font-size:14px;opacity:.5}
+.item{font-size:28px;cursor:grab;transition:transform .12s;line-height:1;user-select:none;touch-action:none}
+.item:hover{transform:scale(1.2)}
+.item.sel{transform:scale(1.35);filter:drop-shadow(0 0 7px var(--roxo2))}
+.restam{text-align:center;font-size:15px;font-weight:bold;color:var(--laranja);margin:0 0 12px}
+.cestas{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}
+.cesta{background:#fff;border:4px solid var(--verde);border-radius:20px;padding:10px 8px 8px;min-height:120px;
+  text-align:center;cursor:pointer;transition:.12s}
+.cesta:hover,.cesta.alvo{background:#dcfce7;transform:scale(1.04)}
+.cesta.alvo{border-style:dashed}
+.cesta.certa{border-color:var(--verde);background:#dcfce7}
+.cesta.erradinha{border-color:var(--vermelho);background:#fee2e2;animation:tremer .35s}
+.cesta.erradinha .cont{color:var(--vermelho)}
+.cesta .rot{font-size:13px;font-weight:bold;opacity:.7}
+.cesta .conteudo{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;margin:6px 0;min-height:40px}
+.cesta .cont{font-size:15px;font-weight:bold;color:var(--verde)}
+
+/* ===================== BALDES (classificar) ===================== */
+.fichas{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;margin-bottom:14px;
+  min-height:70px;background:#faf5ff;border:4px dashed var(--roxo2);border-radius:20px;padding:10px;transition:.12s}
+.fichas.alvo{background:#f3e8ff;transform:scale(1.01)}
+.fichas:empty::after{content:"bandeja vazia ✨";font-size:14px;opacity:.5}
+.ficha{background:#fff;border:4px solid var(--roxo2);border-radius:16px;padding:8px 12px;touch-action:none;
+  font-size:17px;font-weight:bold;cursor:grab;user-select:none;transition:.12s;box-shadow:0 4px 0 rgba(124,58,237,.25)}
+.ficha:hover{transform:translateY(-3px)}
+.ficha.sel{background:var(--amarelo);transform:scale(1.08) rotate(-2deg)}
+.ficha.ok{border-color:var(--verde);background:#dcfce7;box-shadow:0 4px 0 #86efac}
+.ficha.nok{border-color:var(--vermelho);background:#fee2e2;box-shadow:0 4px 0 #fca5a5}
+.baldes{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.balde{border-radius:22px;padding:12px;min-height:130px;border:5px dashed #cbd5e1;background:#fff;cursor:pointer;transition:.12s}
+.balde:hover,.balde.alvo{background:#f5f3ff;border-color:var(--roxo2)}
+.balde h4{margin:0 0 8px;text-align:center;font-size:16px}
+.balde .dentro{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+
+/* ===================== LIGAR (match) ===================== */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match .col{display:grid;gap:10px}
+.mitem{background:#fff;border:4px solid #e5e7eb;border-radius:16px;padding:12px 8px;text-align:center;
+  font-size:17px;font-weight:bold;cursor:pointer;transition:.12s;user-select:none}
+.mitem:hover{border-color:var(--ciano)}
+.mitem.sel{border-color:var(--laranja);background:#fff7ed;transform:scale(1.04)}
+.mitem.ok{border-color:var(--verde);background:#dcfce7;cursor:default;opacity:.85}
+.mitem.nok{animation:tremer .35s;border-color:var(--vermelho)}
+
+/* ===================== RETA NUMERADA ===================== */
+.reta-box{background:#fff;border:4px solid var(--ciano);border-radius:20px;padding:16px 10px 10px;margin-bottom:12px;overflow-x:auto}
+.reta{position:relative;height:96px;min-width:280px}
+.linha{position:absolute;left:0;right:0;top:58px;height:5px;background:var(--escuro);border-radius:3px}
+.tick{position:absolute;top:50px;transform:translateX(-50%);text-align:center}
+.tick b{display:block;width:3px;height:20px;background:var(--escuro);margin:0 auto}
+.tick s{display:block;text-decoration:none;font-size:13px;font-weight:bold;margin-top:2px}
+.kang{position:absolute;top:8px;transform:translateX(-50%);font-size:34px;transition:left .45s cubic-bezier(.3,1.5,.5,1);z-index:2}
+.arco{position:absolute;top:22px;height:36px;border:3px solid var(--rosa);border-bottom:none;
+  border-radius:60px 60px 0 0;opacity:0;animation:aparece .4s forwards}
+@keyframes aparece{to{opacity:1}}
+.arco em{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-style:normal;
+  font-size:14px;font-weight:bold;color:var(--rosa)}
+.reta-ctrl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center}
+.contador{background:var(--amarelo);border-radius:999px;padding:8px 16px;font-weight:bold;font-size:17px}
+
+/* ===================== CRUZADINHA ===================== */
+.cruz-wrap{display:flex;gap:26px;flex-wrap:wrap;justify-content:center}
+.cruz{display:grid;grid-template-columns:repeat(2,58px);gap:4px}
+.cruz .cel{position:relative;width:58px;height:58px;border:4px solid var(--roxo);border-radius:10px;background:#fff}
+.cruz .cel input{width:100%;height:100%;border:none;background:transparent;text-align:center;
+  font-family:inherit;font-size:28px;font-weight:bold;color:var(--roxo);outline:none}
+.cruz .cel small{position:absolute;top:1px;left:4px;font-size:11px;color:var(--rosa);font-weight:bold}
+.cruz .cel.ok{background:#dcfce7;border-color:var(--verde)}
+.cruz .cel.nok{background:#fee2e2;border-color:var(--vermelho)}
+.dicas{font-size:15px;line-height:1.7;margin-top:10px}
+.dicas b{color:var(--rosa)}
+
+/* ===================== ADIVINHA ===================== */
+.enigma{background:linear-gradient(140deg,#312e81,#6d28d9);color:#fff;border-radius:24px;padding:20px;
+  text-align:center;font-size:19px;line-height:1.7;box-shadow:inset 0 0 40px rgba(0,0,0,.3);margin-bottom:12px}
+.enigma .bola{font-size:46px;display:block;animation:gira 4s linear infinite}
+@keyframes gira{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+
+/* ===================== FIM DE FASE / FIM ===================== */
+.estrelas{font-size:54px;text-align:center;letter-spacing:6px}
+.estrelas span{display:inline-block;animation:pop .5s backwards}
+@keyframes pop{from{transform:scale(0) rotate(-180deg);opacity:0}to{transform:none;opacity:1}}
+.medalhas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
+.medalha{background:#fff;border:4px solid var(--amarelo);border-radius:18px;padding:10px;width:104px;text-align:center;font-size:12px;font-weight:bold}
+.medalha.off{filter:grayscale(1);opacity:.4}
+.medalha b{display:block;font-size:30px}
+
+#confete{position:fixed;inset:0;pointer-events:none;z-index:999}
+.balao{position:fixed;left:50%;top:38%;transform:translate(-50%,-50%) scale(0);
+  background:#fff;border:6px solid var(--amarelo);border-radius:28px;padding:22px 30px;
+  font-size:30px;font-weight:bold;color:var(--roxo);z-index:998;box-shadow:0 14px 40px rgba(0,0,0,.25);
+  text-align:center;pointer-events:none}
+.balao.show{animation:balaozin 1.2s forwards}
+@keyframes balaozin{
+  0%{transform:translate(-50%,-50%) scale(0) rotate(-12deg);opacity:0}
+  25%{transform:translate(-50%,-50%) scale(1.15) rotate(3deg);opacity:1}
+  40%{transform:translate(-50%,-50%) scale(1) rotate(0)}
+  80%{transform:translate(-50%,-50%) scale(1);opacity:1}
+  100%{transform:translate(-50%,-90%) scale(.8);opacity:0}
+}
+.esconde{display:none !important}
+@media(max-width:480px){
+  h1{font-size:24px}.pergunta{font-size:19px}.card{padding:16px}
+  .cruz{grid-template-columns:repeat(2,50px)}.cruz .cel{width:50px;height:50px}
+  .cruz .cel input{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="confete"></canvas>
+<div class="balao" id="balao"></div>
+
+<div id="hud">
+  <button class="btn-voltar" onclick="irMapa()">🏠 Mapa</button>
+  <span class="nome"><span class="jog"></span><button class="btn-trocar" onclick="trocarJogador()">trocar</button></span>
+  <span class="pill" id="hudXP">⭐ 0 XP</span>
+  <span class="pill" id="hudSeq">🔥 0</span>
+  <div id="barraXP"><div id="barraXPfill"></div></div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ TELA INICIAL ============ -->
+  <div id="inicio">
+    <div class="card centro">
+      <span class="foguete">🚀</span>
+      <h1 class="grad">A Super Aventura da Divisão</h1>
+      <p style="font-size:21px;margin:10px 0 0"><b>Oi! Qual é o seu nome?</b> 👋</p>
+      <div class="nomeBox">
+        <input id="campoNome" type="text" maxlength="18" autocomplete="off" spellcheck="false"
+               placeholder="escreva seu nome aqui">
+        <button class="btn" style="font-size:22px;padding:14px 26px" onclick="entrarNovo()">JOGAR! 🎮</button>
+      </div>
+      <p class="mini" id="avisoNome"></p>
+      <div class="jogadores" id="jogadores"></div>
+      <p class="mini">Unidade 7 — As ideias da divisão · 8 fases · 38 desafios</p>
+      <div class="faixa">
+        <span>🍒 Repartir</span><span>🏀 Quantos cabem</span><span>🦘 Reta numerada</span>
+        <span>🤝 Divisão &amp; Multiplicação</span><span>🎯 Resto</span><span>✏️ Cruzadinha</span>
+        <span>🛒 Problemas</span><span>👑 Desafio final</span>
+      </div>
+      <p style="font-size:17px">Cada fase vale <b>estrelas</b> ⭐ e <b>XP</b>. Acerte de primeira para ganhar
+      pontos em dobro e manter sua <b>sequência de fogo</b> 🔥 acesa!</p>
+    </div>
+    <div class="card">
+      <h2>🧠 Antes de começar, lembre-se:</h2>
+      <p>Dividir é <b>repartir em partes iguais</b>. Existem <b>duas ideias</b> de divisão:</p>
+      <p>🍒 <b>Repartir igualmente:</b> eu sei em <i>quantos grupos</i> vou dividir e quero saber
+      <i>quanto cabe em cada grupo</i>.<br>
+      <span class="mini">15 acerolas para 3 sobrinhos → 15 ÷ 3 = 5 para cada um.</span></p>
+      <p>🏀 <b>Quantos cabem (medida):</b> eu sei o <i>tamanho de cada grupo</i> e quero saber
+      <i>quantos grupos</i> dá para formar.<br>
+      <span class="mini">20 meninos em times de 5 → 20 ÷ 5 = 4 times.</span></p>
+      <p>E o truque de ouro: <b>para conferir uma divisão, faça a multiplicação!</b>
+      Se 20 ÷ 5 = 4, então 4 × 5 = 20. ✅</p>
+    </div>
+  </div>
+
+  <!-- ============ MAPA ============ -->
+  <div id="mapa" class="esconde">
+    <div class="card">
+      <h1>🗺️ Mapa da Aventura</h1>
+      <p class="centro" style="font-size:18px;margin:0 0 4px">Oi, <b class="jog"></b>! 👋</p>
+      <p class="centro mini">Toque numa fase para jogar. Complete todas e vire <b>Mestre da Divisão</b>!</p>
+      <div class="mapa" id="mapaGrid"></div>
+    </div>
+    <div class="card">
+      <h2>🏅 Minhas medalhas</h2>
+      <div class="medalhas" id="medalhas"></div>
+    </div>
+    <div class="card centro">
+      <h2>📊 Meu progresso</h2>
+      <p id="resumo"></p>
+      <button class="btn cinza" onclick="zerar()">🔄 Começar tudo de novo</button>
+      <button class="btn cinza" onclick="trocarJogador()">👦 Trocar de jogador</button>
+    </div>
+  </div>
+
+  <!-- ============ FASE ============ -->
+  <div id="fase" class="esconde">
+    <div class="card">
+      <div class="passos" id="passos"></div>
+      <div id="palco"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="centro" style="margin-top:16px">
+        <button class="btn azul" id="btnVerificar" onclick="verificar()">VERIFICAR ✅</button>
+        <button class="btn esconde" id="btnProxima" onclick="proxima()">CONTINUAR ➡️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FIM DE FASE ============ -->
+  <div id="fimFase" class="esconde">
+    <div class="card centro">
+      <div class="estrelas" id="fimEstrelas"></div>
+      <h1 id="fimTitulo"></h1>
+      <p id="fimTexto" style="font-size:19px"></p>
+      <div id="fimDica" class="contexto" style="text-align:left"></div>
+      <button class="btn roxo" onclick="irMapa()">VOLTAR AO MAPA 🗺️</button>
+      <button class="btn" id="btnProxFase" onclick="proximaFase()">PRÓXIMA FASE ➡️</button>
+    </div>
+  </div>
+
+  <!-- ============ FIM DO JOGO ============ -->
+  <div id="fim" class="esconde">
+    <div class="card centro">
+      <div style="font-size:90px">👑</div>
+      <h1 class="grad"><span class="jogUp"></span>, VOCÊ É O MESTRE DA DIVISÃO!</h1>
+      <p style="font-size:20px">Você terminou as 8 fases da aventura! 🎉</p>
+      <p id="fimPlacar" style="font-size:19px"></p>
+      <div class="contexto" style="text-align:left">
+        <b>Cola de ouro para a prova 🏆</b><br>
+        1. Divisão é repartir em partes <b>iguais</b>.<br>
+        2. Duas ideias: <b>repartir igualmente</b> e <b>quantos cabem</b>.<br>
+        3. Nomes: <b>dividendo ÷ divisor = quociente</b>, e o que sobra é o <b>resto</b>.<br>
+        4. Resto <b>0</b> → divisão <b>exata</b>. Resto <b>diferente de 0</b> → divisão <b>não exata</b>.<br>
+        5. O resto é <b>sempre menor que o divisor</b>.<br>
+        6. Confira com a multiplicação: <b>quociente × divisor + resto = dividendo</b>.
+      </div>
+      <button class="btn roxo" onclick="irMapa()">VOLTAR AO MAPA 🗺️</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* =========================================================
+   ESTADO DO JOGO
+   ========================================================= */
+const BASE='quiz-divisao-v2';
+function estadoNovo(){return {xp:0,seq:0,melhorSeq:0,estrelas:{},acertos:0,erros:0}}
+let S=estadoNovo(), nome='';
+let faseAtual=0, idx=0, errosFase=0, respondido=false, acertouEssa=false;
+
+function apelido(n){
+  return (n||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'jogador';
+}
+function chaveDe(n){return BASE+':p:'+apelido(n)}
+function salvar(){if(!nome)return;try{localStorage.setItem(chaveDe(nome),JSON.stringify(S))}catch(e){}}
+function carregar(n){
+  S=estadoNovo();
+  try{const d=localStorage.getItem(chaveDe(n)); if(d)S=Object.assign(S,JSON.parse(d))}catch(e){}
+}
+function listaJogadores(){
+  try{return JSON.parse(localStorage.getItem(BASE+':jogadores')||'[]')}catch(e){return []}
+}
+function registrarJogador(n){
+  try{
+    const l=listaJogadores().filter(x=>apelido(x)!==apelido(n));
+    l.unshift(n);
+    localStorage.setItem(BASE+':jogadores',JSON.stringify(l.slice(0,8)));
+  }catch(e){}
+}
+/* troca {n} pelo nome de quem está jogando */
+function pers(t){return String(t==null?'':t).replace(/\{n\}/g,nome||'você')}
+
+/* =========================================================
+   SOM (sem arquivos externos)
+   ========================================================= */
+let ac=null;
+function ctx(){if(!ac){try{ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}return ac}
+function nota(freq,inicio,dur,tipo,vol){
+  const c=ctx(); if(!c)return;
+  const o=c.createOscillator(), g=c.createGain();
+  o.type=tipo||'triangle'; o.frequency.value=freq;
+  g.gain.setValueAtTime(0,c.currentTime+inicio);
+  g.gain.linearRampToValueAtTime(vol||.18,c.currentTime+inicio+.02);
+  g.gain.exponentialRampToValueAtTime(.001,c.currentTime+inicio+dur);
+  o.connect(g); g.connect(c.destination);
+  o.start(c.currentTime+inicio); o.stop(c.currentTime+inicio+dur+.05);
+}
+function som(t){
+  if(t==='ok'){[523,659,784].forEach((f,i)=>nota(f,i*.08,.22))}
+  else if(t==='erro'){nota(200,0,.18,'sawtooth',.12);nota(150,.14,.25,'sawtooth',.12)}
+  else if(t==='fase'){[523,659,784,1047,1319].forEach((f,i)=>nota(f,i*.1,.4))}
+  else if(t==='clique'){nota(700,0,.06,'square',.07)}
+  else if(t==='pulo'){nota(880,0,.1,'sine',.1)}
+}
+
+/* =========================================================
+   CONFETE
+   ========================================================= */
+const cvs=document.getElementById('confete'), cx=cvs.getContext('2d');
+let parts=[];
+function resize(){cvs.width=innerWidth;cvs.height=innerHeight}
+addEventListener('resize',resize);resize();
+function confete(n){
+  const cores=['#7c3aed','#ec4899','#f97316','#facc15','#22c55e','#3b82f6','#06b6d4'];
+  for(let i=0;i<(n||90);i++)parts.push({
+    x:Math.random()*cvs.width, y:-20-Math.random()*220,
+    vx:(Math.random()-.5)*4, vy:2+Math.random()*4,
+    s:6+Math.random()*8, r:Math.random()*6, vr:(Math.random()-.5)*.3,
+    c:cores[(Math.random()*cores.length)|0]
+  });
+}
+function loop(){
+  cx.clearRect(0,0,cvs.width,cvs.height);
+  parts=parts.filter(p=>p.y<cvs.height+30);
+  parts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.vy+=.06;
+    cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);
+    cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);cx.restore();
+  });
+  requestAnimationFrame(loop);
+}
+loop();
+function balao(txt){
+  const b=document.getElementById('balao');
+  b.textContent=txt;b.classList.remove('show');void b.offsetWidth;b.classList.add('show');
+}
+
+/* =========================================================
+   ARRASTAR E SOLTAR (funciona com mouse e com o dedo)
+   ========================================================= */
+function zonaSob(x,y,sel){
+  const lista=document.elementsFromPoint(x,y)||[];
+  for(const e of lista){
+    const z=e.closest?e.closest(sel):null;
+    if(z)return z;
+  }
+  return null;
+}
+/* sempre=true: continua podendo arrastar mesmo depois de responder
+   (útil nos materiais que a criança explora enquanto lê a explicação) */
+function tornarArrastavel(el,zonaSel,aoSoltar,sempre){
+  el.addEventListener('pointerdown',ini=>{
+    if((respondido&&!sempre)||ini.button>0)return;
+    const r=el.getBoundingClientRect();
+    const offX=ini.clientX-r.left, offY=ini.clientY-r.top;
+    let puxando=false, ghost=null, zona=null;
+
+    const mover=e=>{
+      if(!puxando && Math.abs(e.clientX-ini.clientX)+Math.abs(e.clientY-ini.clientY)<7)return;
+      if(!puxando){
+        puxando=true;
+        ghost=el.cloneNode(true);
+        ghost.className=el.className.replace(/\bsel\b/,'')+' arrastando';
+        ghost.style.width=r.width+'px';ghost.style.height=r.height+'px';
+        document.body.appendChild(ghost);
+        el.classList.add('fantasma');
+      }
+      ghost.style.left=(e.clientX-offX)+'px';
+      ghost.style.top=(e.clientY-offY)+'px';
+      const z=zonaSob(e.clientX,e.clientY,zonaSel);
+      if(z!==zona){ if(zona)zona.classList.remove('alvo'); zona=z; if(zona)zona.classList.add('alvo'); }
+    };
+    const soltar=()=>{
+      document.removeEventListener('pointermove',mover);
+      document.removeEventListener('pointerup',soltar);
+      document.removeEventListener('pointercancel',soltar);
+      if(ghost)ghost.remove();
+      el.classList.remove('fantasma');
+      if(zona)zona.classList.remove('alvo');
+      if(puxando){
+        // impede que o clique nativo do fim do arrasto dispare a seleção
+        const bloq=ev=>{ev.stopPropagation();ev.preventDefault()};
+        el.addEventListener('click',bloq,{capture:true,once:true});
+        setTimeout(()=>el.removeEventListener('click',bloq,{capture:true}),350);
+        if(zona)aoSoltar(el,zona);
+      }
+    };
+    document.addEventListener('pointermove',mover);
+    document.addEventListener('pointerup',soltar);
+    document.addEventListener('pointercancel',soltar);
+  });
+}
+
+/* =========================================================
+   CONTEÚDO — baseado na Unidade 7 do livro
+   ========================================================= */
+const FASES=[
+/* ---------- FASE 1 ---------- */
+{
+ nome:'Repartir Igualmente', emoji:'🍒', cor:'linear-gradient(140deg,#f43f5e,#fb7185)',
+ dica:'Repartir igualmente é dar a mesma quantidade para cada um, de 1 em 1, até acabar.',
+ ats:[
+  {tipo:'reparte', total:15, grupos:3, emoji:'🍒',
+   contexto:'Paula comprou <b>15 acerolas</b> e vai repartir igualmente entre seus <b>3 sobrinhos</b>.',
+   pergunta:'Arraste as acerolas para as 3 cestas e diga quantas cada sobrinho recebeu.',
+   rotulo:'Sobrinho', artigo:'um',
+   explica:'15 ÷ 3 = <b>5</b>. Cada sobrinho recebe 5 acerolas e <b>não sobra nada</b>. Conferindo: 3 × 5 = 15 ✅'},
+
+  {tipo:'mc',
+   contexto:'Agora imagine que fossem <b>18 acerolas</b> para os mesmos <b>3 sobrinhos</b>.',
+   pergunta:'Quantas acerolas cada sobrinho receberia?',
+   opcoes:['5 acerolas','6 acerolas','7 acerolas','9 acerolas'], correta:1,
+   explica:'18 ÷ 3 = <b>6</b>. Confere com a multiplicação: 3 × 6 = 18 ✅'},
+
+  {tipo:'input',
+   contexto:'E se fossem <b>22 acerolas</b> para <b>3 sobrinhos</b>? Reparta de 1 em 1 e veja o que acontece.',
+   pergunta:'Complete: 22 ÷ 3 = ____ e resta ____ acerola.',
+   campos:[{rot:'22 ÷ 3 =',r:7},{rot:'e resta',r:1}],
+   explica:'Cada sobrinho recebe <b>7</b> acerolas (3 × 7 = 21) e <b>sobra 1</b>. Como sobrou, essa divisão <b>não é exata</b>.'},
+
+  {tipo:'mc',
+   contexto:'Repartindo igualmente <b>R$ 21,00</b> entre <b>3 pessoas</b>.',
+   pergunta:'Qual conta resolve esse problema?',
+   opcoes:['21 × 3','21 ÷ 3','21 + 3','3 ÷ 21'], correta:1,
+   explica:'21 ÷ 3 = <b>7</b>. Cada pessoa recebe R$ 7,00. Repartir igualmente é sempre <b>dividir</b> o total pelo número de grupos.'},
+
+  {tipo:'input',
+   contexto:'Joana desenhou quadrinhos e foi colocando 1 bolinha em cada, até acabar. Faça igual na sua cabeça!',
+   pergunta:'Resolva as três divisões usando a ideia de repartir igualmente:',
+   campos:[{rot:'9 ÷ 3 =',r:3},{rot:'12 ÷ 2 =',r:6},{rot:'20 ÷ 4 =',r:5}],
+   explica:'9 ÷ 3 = <b>3</b> (3 × 3 = 9) · 12 ÷ 2 = <b>6</b> (2 × 6 = 12) · 20 ÷ 4 = <b>5</b> (4 × 5 = 20) ✅'}
+ ]
+},
+/* ---------- FASE 2 ---------- */
+{
+ nome:'Quantos Cabem?', emoji:'🏀', cor:'linear-gradient(140deg,#f97316,#fbbf24)',
+ dica:'Na ideia de medida a pergunta é "quantos grupos dá para formar?" — você já sabe o tamanho de cada grupo.',
+ ats:[
+  {tipo:'mc',
+   contexto:'No 2º ano C há <b>20 meninos</b>. Eles vão formar times de basquete com <b>5 jogadores</b> em cada time.',
+   pergunta:'Quantos times serão formados?',
+   opcoes:['3 times','4 times','5 times','10 times'], correta:1,
+   explica:'20 ÷ 5 = <b>4</b>. A pergunta aqui é "<b>quantos grupos de 5 cabem em 20?</b>". Conferindo: 4 × 5 = 20 ✅'},
+
+  {tipo:'reparte', total:18, grupos:3, emoji:'💧', porGrupo:6,
+   contexto:'Rosa vendeu <b>18 garrafas de água</b> e vai enviar em embalagens com <b>6 garrafas</b> cada uma.',
+   pergunta:'Arraste as garrafas para montar as embalagens e diga quantas ficam em cada uma.',
+   rotulo:'Embalagem', artigo:'uma',
+   explica:'18 ÷ 6 = <b>3 embalagens</b> completas, com 6 garrafas em cada e <b>nenhuma garrafa sobrando</b> ✅'},
+
+  {tipo:'input',
+   contexto:'Marta vai cortar <b>40 centímetros</b> de barbante em pedaços de <b>5 centímetros</b> cada um.',
+   pergunta:'Quantos pedaços ela vai obter?',
+   campos:[{rot:'40 ÷ 5 =',r:8,sufixo:'pedaços'}],
+   explica:'40 ÷ 5 = <b>8</b> pedaços. Pense: "quantos 5 cabem em 40?" Conferindo: 8 × 5 = 40 ✅'},
+
+  {tipo:'baldes',
+   pergunta:'Cada situação usa qual ideia da divisão? Arraste cada ficha para o balde certo!',
+   baldes:[{id:'r',label:'🍒 Repartir igualmente<br><small>quanto cabe em cada grupo?</small>'},
+           {id:'m',label:'🏀 Quantos cabem<br><small>quantos grupos dá pra formar?</small>'}],
+   itens:[
+    {txt:'24 balas para 4 amigos',b:'r'},
+    {txt:'30 ovos em caixas de 6',b:'m'},
+    {txt:'R$ 21 entre 3 pessoas',b:'r'},
+    {txt:'14 reais em notas de 2',b:'m'},
+    {txt:'18 flores em 2 vasos iguais',b:'r'},
+    {txt:'40 cm em pedaços de 5 cm',b:'m'}],
+   explica:'Quando o problema diz <b>em quantos grupos</b> repartir, é <b>repartir igualmente</b>. Quando diz o <b>tamanho de cada grupo</b>, é <b>quantos cabem</b>. Nos dois casos a conta é uma <b>divisão</b>!'},
+
+  {tipo:'mc',
+   contexto:'Rafael desenhou <b>8 bolinhas</b> e foi formando grupos de <b>4 bolinhas</b>.',
+   pergunta:'Quantos grupos ele conseguiu formar?',
+   opcoes:['2 grupos','3 grupos','4 grupos','8 grupos'], correta:0,
+   explica:'8 ÷ 4 = <b>2</b>. Com 8 bolinhas em grupos de 4 obtemos <b>2 grupos</b> ✅'}
+ ]
+},
+/* ---------- FASE 3 ---------- */
+{
+ nome:'Reta Numerada', emoji:'🦘', cor:'linear-gradient(140deg,#06b6d4,#3b82f6)',
+ dica:'Na reta numerada a gente começa no dividendo e pula para trás. O número de pulos é o resultado!',
+ ats:[
+  {tipo:'reta', total:9, passo:3,
+   contexto:'Para descobrir <b>9 ÷ 3</b>, comece no 9 e conte "para trás" de 3 em 3 até chegar ao 0.',
+   pergunta:'Quantas vezes o 3 cabe no 9? Dê os pulos e responda!',
+   explica:'Foram <b>3 pulos</b> de 3 para chegar ao zero. Então 9 ÷ 3 = <b>3</b> ✅'},
+
+  {tipo:'reta', total:20, passo:4,
+   contexto:'Agora vamos de <b>20 ÷ 4</b>. Quantos 4 cabem em 20?',
+   pergunta:'Pule de 4 em 4 do 20 até o 0 e diga o resultado.',
+   explica:'20 → 16 → 12 → 8 → 4 → 0. São <b>5 pulos</b>, então 20 ÷ 4 = <b>5</b>. Confere: 5 × 4 = 20 ✅'},
+
+  {tipo:'reta', total:12, passo:6,
+   contexto:'Quantas vezes o <b>6</b> cabe no <b>12</b>?',
+   pergunta:'Faça na reta numerada e complete a divisão.',
+   explica:'12 → 6 → 0. São <b>2 pulos</b>: 12 ÷ 6 = <b>2</b> ✅'},
+
+  {tipo:'input',
+   contexto:'Quantas notas de <b>2 reais</b> são necessárias para se ter <b>14 reais</b>? Use a reta na sua cabeça: 14, 12, 10, 8, 6, 4, 2, 0.',
+   pergunta:'Indique a divisão e responda:',
+   campos:[{rot:'14 ÷ 2 =',r:7,sufixo:'notas'}],
+   explica:'São <b>7 pulos</b> de 2 até o zero: 14 ÷ 2 = <b>7</b>. Ela precisa de 7 notas de 2 reais ✅'},
+
+  {tipo:'mc',
+   contexto:'Um canguru começou no <b>8</b> e deu pulos para trás de <b>2 em 2</b> até chegar exatamente no 0.',
+   pergunta:'Qual divisão ele representou?',
+   opcoes:['8 ÷ 2 = 4','8 ÷ 4 = 2','2 ÷ 8 = 4','8 − 2 = 6'], correta:0,
+   explica:'8 → 6 → 4 → 2 → 0: são <b>4 pulos</b> de 2. Logo <b>8 ÷ 2 = 4</b>. Dividir é fazer <b>subtrações sucessivas</b>! ✅'}
+ ]
+},
+/* ---------- FASE 4 ---------- */
+{
+ nome:'Divisão &amp; Multiplicação', emoji:'🤝', cor:'linear-gradient(140deg,#8b5cf6,#d946ef)',
+ dica:'Multiplicação e divisão são operações INVERSAS: uma desfaz a outra.',
+ ats:[
+  {tipo:'match',
+   pergunta:'Ligue cada divisão à multiplicação que prova que ela está certa!',
+   pares:[{a:'42 ÷ 7 = 6',b:'7 × 6 = 42'},
+          {a:'72 ÷ 9 = 8',b:'9 × 8 = 72'},
+          {a:'18 ÷ 2 = 9',b:'2 × 9 = 18'},
+          {a:'45 ÷ 5 = 9',b:'5 × 9 = 45'}],
+   explica:'Toda divisão exata tem uma multiplicação que a confirma. Se <b>a ÷ b = c</b>, então <b>b × c = a</b> ✅'},
+
+  {tipo:'input',
+   contexto:'Rodrigo pensa assim: "4 vezes que número dá 12? É 3! Então 12 ÷ 4 = 3."',
+   pergunta:'Faça como o Rodrigo e complete cada operação:',
+   campos:[{rot:'___ × 3 = 12 →',r:4},{rot:'28 ÷ ___ = 7 →',r:4},{rot:'___ ÷ 2 = 10 →',r:20}],
+   explica:'<b>4</b> × 3 = 12 · 28 ÷ <b>4</b> = 7 (porque 4 × 7 = 28) · <b>20</b> ÷ 2 = 10 (porque 2 × 10 = 20) ✅'},
+
+  {tipo:'mc',
+   contexto:'Você fez a conta <b>20 ÷ 5 = 4</b> e quer ter certeza de que acertou.',
+   pergunta:'Qual multiplicação prova que a sua resposta está correta?',
+   opcoes:['20 × 5 = 100','4 × 5 = 20','20 + 5 = 25','5 × 5 = 25'], correta:1,
+   explica:'<b>4 × 5 = 20</b>. Para verificar uma divisão, multiplique o <b>quociente</b> pelo <b>divisor</b>: tem que voltar ao <b>dividendo</b> ✅'},
+
+  {tipo:'input',
+   contexto:'Luana vai distribuir igualmente <b>24 lápis</b> entre as primas dela e cada uma receberá <b>8 lápis</b>.',
+   pergunta:'Quantas são as primas de Luana?',
+   campos:[{rot:'24 ÷ 8 =',r:3,sufixo:'primas'}],
+   explica:'24 ÷ 8 = <b>3</b> primas. Repare: aqui a gente sabia quanto cada uma ganha e procurou <b>quantos grupos</b> ✅'},
+
+  {tipo:'input',
+   contexto:'Certa quantia foi repartida igualmente entre <b>6 crianças</b> e cada uma recebeu <b>R$ 7,00</b>.',
+   pergunta:'Que quantia foi repartida no total?',
+   campos:[{rot:'R$',r:42}],
+   explica:'Aqui a divisão foi de trás para frente! 6 × 7 = <b>42</b>. Foram repartidos <b>R$ 42,00</b> ✅'}
+ ]
+},
+/* ---------- FASE 5 ---------- */
+{
+ nome:'Exata ou com Resto?', emoji:'🎯', cor:'linear-gradient(140deg,#22c55e,#14b8a6)',
+ dica:'Resto 0 → divisão exata. Resto diferente de 0 → divisão não exata. E o resto é sempre MENOR que o divisor!',
+ ats:[
+  {tipo:'match',
+   contexto:'Nesta conta: <b>22 ÷ 3 = 7 e resta 1</b>',
+   pergunta:'Cada número tem um nome. Ligue o nome ao número certo!',
+   pares:[{a:'Dividendo',b:'22'},{a:'Divisor',b:'3'},{a:'Quociente',b:'7'},{a:'Resto',b:'1'}],
+   explica:'<b>Dividendo</b> é o que vai ser repartido (22). <b>Divisor</b> é por quanto dividimos (3). <b>Quociente</b> é o resultado (7). <b>Resto</b> é o que sobra (1). E olha: 3 × 7 + 1 = 22 ✅'},
+
+  {tipo:'baldes',
+   pergunta:'Arraste cada divisão para o balde certo: exata ou não exata?',
+   baldes:[{id:'e',label:'✅ Divisão EXATA<br><small>resto 0</small>'},
+           {id:'n',label:'🔸 NÃO exata<br><small>sobra alguma coisa</small>'}],
+   itens:[{txt:'18 ÷ 6',b:'e'},{txt:'13 ÷ 6',b:'n'},{txt:'65 ÷ 5',b:'e'},
+          {txt:'30 ÷ 7',b:'n'},{txt:'40 ÷ 5',b:'e'},{txt:'17 ÷ 2',b:'n'}],
+   explica:'18 ÷ 6 = 3 (resto 0) · 65 ÷ 5 = 13 (resto 0) · 40 ÷ 5 = 8 (resto 0) → <b>exatas</b>.<br>13 ÷ 6 = 2 e sobra 1 · 30 ÷ 7 = 4 e sobra 2 · 17 ÷ 2 = 8 e sobra 1 → <b>não exatas</b>.'},
+
+  {tipo:'input',
+   contexto:'Alberto quer embalar <b>13 limões</b> em saquinhos com <b>6 limões</b> cada um. Ele pensa: "2 × 6 = 12, e 3 × 6 = 18 que passa de 13".',
+   pergunta:'Complete a divisão de Alberto:',
+   campos:[{rot:'13 ÷ 6 =',r:2,sufixo:'saquinhos'},{rot:'e sobram',r:1,sufixo:'limão'}],
+   explica:'13 ÷ 6 = <b>2</b> e resto <b>1</b>. Verificação: 2 × 6 = 12 e 12 + 1 = 13 ✅ Como o resto é diferente de 0, a divisão <b>não é exata</b>.'},
+
+  {tipo:'input',
+   contexto:'Hora de treinar o resto! Escreva o resultado e o que sobra em cada uma.',
+   pergunta:'Efetue as divisões e registre o resto:',
+   campos:[{rot:'30 ÷ 7 =',r:4},{rot:'resto',r:2},{rot:'13 ÷ 4 =',r:3},{rot:'resto',r:1}],
+   explica:'30 ÷ 7 = <b>4</b>, resto <b>2</b> (7 × 4 = 28, e 28 + 2 = 30).<br>13 ÷ 4 = <b>3</b>, resto <b>1</b> (4 × 3 = 12, e 12 + 1 = 13) ✅'},
+
+  {tipo:'mc',
+   contexto:'Paulo tem <b>26 moedas</b> de 1 real e vai reparti-las igualmente entre seus <b>3 sobrinhos</b>.',
+   pergunta:'Cada sobrinho vai receber 8 moedas. E quantas moedas vão sobrar?',
+   opcoes:['Nenhuma','1 moeda','2 moedas','3 moedas'], correta:2,
+   explica:'3 × 8 = 24, e 26 − 24 = <b>2</b>. Sobram <b>2 moedas</b>. Repare que o resto (2) é <b>menor que o divisor</b> (3) — isso sempre acontece! ✅'},
+
+  {tipo:'mc',
+   contexto:'Judite guarda seus livros em caixas. Em cada caixa cabem <b>8 livros</b> e ela tem <b>48 livros</b>.',
+   pergunta:'Quantas caixas ficarão cheias?',
+   opcoes:['5 caixas','6 caixas','7 caixas','8 caixas'], correta:1,
+   explica:'48 ÷ 8 = <b>6</b> caixas cheias, resto 0 — divisão <b>exata</b>. Confere: 6 × 8 = 48 ✅'}
+ ]
+},
+/* ---------- FASE 6 ---------- */
+{
+ nome:'Cruzadinha da Divisão', emoji:'✏️', cor:'linear-gradient(140deg,#ec4899,#f43f5e)',
+ dica:'Nas cruzadinhas de número, cada quadradinho recebe UM algarismo.',
+ ats:[
+  {tipo:'cruzadinha',
+   pergunta:'Resolva as contas e escreva um algarismo em cada quadradinho!',
+   blocos:[
+     {titulo:'Cruzadinha A',
+      grade:[['1','2'],['3','5']],
+      dicas:[
+        'Horizontais: <b>1→</b> 72 ÷ 6 &nbsp;·&nbsp; <b>3→</b> 70 ÷ 2',
+        'Verticais: <b>1↓</b> 65 ÷ 5 &nbsp;·&nbsp; <b>2↓</b> 50 ÷ 2'],
+      marcas:[['1','2'],['3','']]},
+     {titulo:'Cruzadinha B',
+      grade:[['2','4'],['1','0']],
+      dicas:[
+        'Horizontais: <b>1→</b> 48 ÷ 2 &nbsp;·&nbsp; <b>3→</b> 80 ÷ 8',
+        'Verticais: <b>1↓</b> 63 ÷ 3 &nbsp;·&nbsp; <b>2↓</b> 200 ÷ 5'],
+      marcas:[['1','2'],['3','']]}
+   ],
+   explica:'<b>A:</b> 72÷6=<b>12</b>, 70÷2=<b>35</b>, 65÷5=<b>13</b>, 50÷2=<b>25</b>.<br><b>B:</b> 48÷2=<b>24</b>, 80÷8=<b>10</b>, 63÷3=<b>21</b>, 200÷5=<b>40</b>. Todas exatas! ✅'}
+ ]
+},
+/* ---------- FASE 7 ---------- */
+{
+ nome:'Problemas do Dia a Dia', emoji:'🛒', cor:'linear-gradient(140deg,#0ea5e9,#6366f1)',
+ dica:'Leia o problema, descubra QUAL é o total e EM QUANTAS partes ele vai ser dividido.',
+ ats:[
+  {tipo:'input',
+   contexto:'Em um canil há <b>48 caixas de ração</b>. Os cães do canil consomem <b>8 caixas por dia</b>.',
+   pergunta:'Quantos dias vai durar essa ração?',
+   campos:[{rot:'48 ÷ 8 =',r:6,sufixo:'dias'}],
+   explica:'48 ÷ 8 = <b>6 dias</b>. Aqui é a ideia de "quantos cabem": quantos 8 cabem em 48? ✅'},
+
+  {tipo:'input',
+   contexto:'Rosana vai distribuir igualmente <b>40 sabonetes</b> em <b>5 caixas</b>.',
+   pergunta:'Quantos sabonetes ficarão em cada caixa?',
+   campos:[{rot:'40 ÷ 5 =',r:8,sufixo:'sabonetes'}],
+   explica:'40 ÷ 5 = <b>8</b> sabonetes em cada caixa. Confere: 5 × 8 = 40 ✅'},
+
+  {tipo:'mc',
+   contexto:'Cada caderno custa <b>R$ 8,00</b> e você tem <b>R$ 16,00</b>.',
+   pergunta:'Quantos cadernos você pode comprar?',
+   opcoes:['1 caderno','2 cadernos','3 cadernos','8 cadernos'], correta:1,
+   explica:'16 ÷ 8 = <b>2</b> cadernos. Pergunta escondida: "quantos 8 cabem em 16?" ✅'},
+
+  {tipo:'input',
+   contexto:'Lúcia tem <b>2 notas de R$ 10,00</b> e <b>5 moedas de R$ 1,00</b>. Ela quer trocar tudo por notas de <b>R$ 5,00</b>.',
+   pergunta:'Que quantia ela tem e quantas notas de R$ 5,00 vai receber?',
+   campos:[{rot:'Ela tem R$',r:25},{rot:'Vai receber',r:5,sufixo:'notas'}],
+   explica:'2 × 10 + 5 = <b>25 reais</b>. Depois 25 ÷ 5 = <b>5</b> notas de R$ 5,00 ✅'},
+
+  {tipo:'input',
+   contexto:'Uma pessoa gastou <b>14 litros</b> de água em <b>2 escovações</b> de dentes de 5 minutos.',
+   pergunta:'Quantos litros ela gastou em cada escovação?',
+   campos:[{rot:'14 ÷ 2 =',r:7,sufixo:'litros'}],
+   explica:'14 ÷ 2 = <b>7 litros</b> por escovação. Fechando a torneira enquanto escova, dá para gastar bem menos! 💧'},
+
+  {tipo:'input',
+   contexto:'Carlos comprou <b>18 flores</b> e montou arranjos com <b>6 flores</b> em cada um.',
+   pergunta:'Quantos arranjos ele montou?',
+   campos:[{rot:'18 ÷ 6 =',r:3,sufixo:'arranjos'}],
+   explica:'18 ÷ 6 = <b>3</b> arranjos, sem sobrar flor nenhuma. Divisão <b>exata</b> ✅'}
+ ]
+},
+/* ---------- FASE 8 ---------- */
+{
+ nome:'Desafio Final', emoji:'👑', cor:'linear-gradient(140deg,#facc15,#f97316)',
+ dica:'Nos enigmas, leia com calma e pense: o que a pista está pedindo — o quociente, o dividendo ou o resto?',
+ ats:[
+  {tipo:'adivinha', bola:'🔮', r:9, pergunta:'Enigma 1 — decifre e escreva o número!',
+   enigma:'Eu sou um número...<br>Se você pegar <b>36</b> e repartir igualmente em <b>4</b> partes,<br>cada parte sou eu!',
+   pista:'Pense: 4 vezes qual número dá 36?',
+   explica:'36 ÷ 4 = <b>9</b>. Confere: 4 × 9 = 36 ✅'},
+
+  {tipo:'adivinha', bola:'🧩', r:30, pergunta:'Enigma 2 — cuidado, esse é de trás para frente!',
+   enigma:'Eu sou um número...<br>Quando me dividem por <b>5</b>,<br>o resultado é <b>6</b>. Quem sou eu?',
+   pista:'Faça o caminho de volta: 5 × 6 = ?',
+   explica:'<b>30</b>, porque 30 ÷ 5 = 6. Para achar o <b>dividendo</b>, multiplique o quociente pelo divisor: 5 × 6 = 30 ✅'},
+
+  {tipo:'adivinha', bola:'🍬', r:2, pergunta:'Enigma 3 — aqui a resposta é o RESTO!',
+   enigma:'Eu sou pequenininho...<br>Sou o que <b>sobra</b> quando dividimos <b>17</b> por <b>5</b>.<br>Quem sou eu?',
+   pista:'5 × 3 = 15. Quanto falta de 15 para 17?',
+   explica:'17 ÷ 5 = 3 e sobra <b>2</b>. O resto é <b>2</b> — e olha só: ele é menor que o divisor 5 ✅'},
+
+  {tipo:'adivinha', bola:'⚽', r:8, pergunta:'Enigma 4 — use a multiplicação para achar!',
+   enigma:'Eu sou o número que,<br>multiplicado por <b>7</b>, dá <b>56</b>.<br>Ou seja, eu sou 56 ÷ 7!',
+   pista:'Vá contando de 7 em 7: 7, 14, 21, 28, 35, 42, 49, 56...',
+   explica:'56 ÷ 7 = <b>8</b>, porque 7 × 8 = 56 ✅'},
+
+  {tipo:'adivinha', bola:'🎁', r:10, pergunta:'Enigma final — o seu grande desafio!',
+   enigma:'{n} repartiu <b>100 balas</b> igualmente<br>entre <b>10 amigos</b>.<br>Quantas balas cada amigo ganhou?',
+   pista:'Dividir por 10 é fácil: é só tirar um zerinho!',
+   explica:'100 ÷ 10 = <b>10</b> balas para cada amigo. Dividir por 10 tira um zero do final ✅'}
+ ]
+}
+];
+
+const MEDALHAS=[
+ {id:'primeira',ico:'🌟',nome:'Primeira fase',teste:()=>Object.keys(S.estrelas).length>=1},
+ {id:'metade',ico:'🚀',nome:'Metade do caminho',teste:()=>Object.keys(S.estrelas).length>=4},
+ {id:'todas',ico:'👑',nome:'Todas as fases',teste:()=>Object.keys(S.estrelas).length>=FASES.length},
+ {id:'perfeito',ico:'💎',nome:'Fase perfeita',teste:()=>Object.values(S.estrelas).some(e=>e===3)},
+ {id:'seq5',ico:'🔥',nome:'5 seguidas',teste:()=>S.melhorSeq>=5},
+ {id:'seq10',ico:'⚡',nome:'10 seguidas',teste:()=>S.melhorSeq>=10},
+ {id:'xp300',ico:'🏆',nome:'300 XP',teste:()=>S.xp>=300},
+ {id:'mestre',ico:'🧠',nome:'Mestre total',teste:()=>Object.keys(S.estrelas).length>=FASES.length&&Object.values(S.estrelas).every(e=>e===3)}
+];
+
+/* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
+const $=id=>document.getElementById(id);
+function mostrar(tela){
+  ['inicio','mapa','fase','fimFase','fim'].forEach(t=>$(t).classList.add('esconde'));
+  $(tela).classList.remove('esconde');
+  $('hud').style.display = (tela==='inicio')?'none':'flex';
+  scrollTo({top:0,behavior:'smooth'});
+}
+function aplicarNome(){
+  document.title='A Super Aventura da Divisão — '+nome;
+  document.querySelectorAll('.jog').forEach(e=>e.textContent=nome);
+  document.querySelectorAll('.jogUp').forEach(e=>e.textContent=nome.toUpperCase());
+}
+function entrar(n){
+  n=String(n||'').replace(/\s+/g,' ').trim().slice(0,18);
+  // deixa bonitinho: "letícia" -> "Letícia", "MIGUEL" -> "Miguel"
+  n=n.replace(/\S+/g,w=>w[0].toUpperCase()+(w===w.toUpperCase()?w.slice(1).toLowerCase():w.slice(1)));
+  if(!n){
+    $('avisoNome').textContent='Escreva seu nome para começar 😊';
+    $('campoNome').focus();som('erro');return;
+  }
+  $('avisoNome').textContent='';
+  nome=n;carregar(n);registrarJogador(n);aplicarNome();
+  ctx();som('clique');
+  irMapa();
+  if(S.xp>0)balao('Bem-vindo de volta, '+nome+'! 👋'); else balao('Vamos lá, '+nome+'! 🚀');
+}
+function entrarNovo(){entrar($('campoNome').value)}
+function trocarJogador(){
+  nome='';S=estadoNovo();
+  document.title='A Super Aventura da Divisão';
+  document.querySelectorAll('.jog,.jogUp').forEach(e=>e.textContent='');
+  mostrar('inicio');listarJogadores();
+  $('campoNome').value='';$('avisoNome').textContent='';
+  setTimeout(()=>$('campoNome').focus(),200);
+}
+function listarJogadores(){
+  const cx=$('jogadores'),l=listaJogadores();
+  if(!l.length){cx.innerHTML='';return}
+  cx.innerHTML='<p class="mini" style="margin:6px 0 2px">Já jogou antes? Toque no seu nome:</p>';
+  l.forEach(n=>{
+    let xp=0;
+    try{const d=JSON.parse(localStorage.getItem(chaveDe(n))||'{}');xp=d.xp||0}catch(e){}
+    const b=document.createElement('button');
+    b.className='chipJog';
+    b.innerHTML=n+' <small>('+xp+' XP)</small>';
+    b.onclick=()=>entrar(n);
+    cx.appendChild(b);
+  });
+}
+
+function irMapa(){mostrar('mapa');desenharMapa();atualizarHUD()}
+
+function desenharMapa(){
+  const g=$('mapaGrid');g.innerHTML='';
+  FASES.forEach((f,i)=>{
+    const est=S.estrelas[i]||0;
+    const liberada = i===0 || S.estrelas[i-1]!==undefined;
+    const d=document.createElement('div');
+    d.className='fase-card'+(liberada?'':' bloq')+(est?' feita':'');
+    d.style.background=f.cor;
+    d.innerHTML=`<span class="num">${i+1}</span>
+      <span class="emoji">${liberada?f.emoji:'🔒'}</span>
+      <div class="tit">${f.nome}</div>
+      <div class="stars">${est?'⭐'.repeat(est)+'☆'.repeat(3-est):'☆☆☆'}</div>`;
+    d.onclick=()=>{
+      if(!liberada){balao('Termine a fase '+i+' primeiro! 🔒');som('erro');return}
+      abrirFase(i);
+    };
+    g.appendChild(d);
+  });
+  // medalhas
+  const m=$('medalhas');m.innerHTML='';
+  MEDALHAS.forEach(md=>{
+    const ok=md.teste();
+    m.innerHTML+=`<div class="medalha ${ok?'':'off'}"><b>${ok?md.ico:'🔒'}</b>${md.nome}</div>`;
+  });
+  const feitas=Object.keys(S.estrelas).length;
+  const tot=Object.values(S.estrelas).reduce((a,b)=>a+b,0);
+  $('resumo').innerHTML=`Fases completas: <b>${feitas}/${FASES.length}</b><br>
+    Estrelas: <b>${tot}/${FASES.length*3}</b> ⭐<br>
+    Acertos: <b>${S.acertos}</b> · Melhor sequência: <b>${S.melhorSeq}</b> 🔥`;
+}
+
+function atualizarHUD(){
+  $('hudXP').textContent='⭐ '+S.xp+' XP';
+  $('hudSeq').textContent='🔥 '+S.seq;
+  const meta=FASES.reduce((a,f)=>a+f.ats.length,0)*20;
+  $('barraXPfill').style.width=Math.min(100,S.xp/meta*100)+'%';
+}
+
+function zerar(){
+  if(!confirm('Apagar todo o progresso de '+nome+' e recomeçar do zero?'))return;
+  S=estadoNovo();salvar();irMapa();balao('Tudo zerado! 🔄');
+}
+
+/* =========================================================
+   FASE
+   ========================================================= */
+function abrirFase(i){
+  faseAtual=i;idx=0;errosFase=0;som('clique');
+  mostrar('fase');renderAt();
+}
+function renderPassos(){
+  const p=$('passos');p.innerHTML='';
+  FASES[faseAtual].ats.forEach((_,i)=>{
+    p.innerHTML+=`<i class="${i<idx?'done':i===idx?'on':''}"></i>`;
+  });
+}
+
+let estado={}; // estado da atividade corrente
+
+function renderAt(){
+  respondido=false;acertouEssa=false;estado={};
+  const at=FASES[faseAtual].ats[idx];
+  renderPassos();
+  $('feedback').className='feedback';
+  $('btnVerificar').classList.remove('esconde');
+  $('btnProxima').classList.add('esconde');
+  $('btnVerificar').disabled=false;
+
+  let h=`<div style="font-size:14px;font-weight:bold;color:#a855f7;margin-bottom:6px">
+          ${FASES[faseAtual].emoji} FASE ${faseAtual+1} · ${FASES[faseAtual].nome} — Desafio ${idx+1} de ${FASES[faseAtual].ats.length}</div>`;
+  if(at.contexto)h+=`<div class="contexto">${pers(at.contexto)}</div>`;
+  if(at.pergunta)h+=`<div class="pergunta">${pers(at.pergunta)}</div>`;
+  h+=`<div id="area"></div>`;
+  $('palco').innerHTML=h;
+  ({mc:mtMC,input:mtInput,baldes:mtBaldes,match:mtMatch,reta:mtReta,
+    reparte:mtReparte,cruzadinha:mtCruz,adivinha:mtAdiv})[at.tipo](at,$('area'));
+  scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- múltipla escolha ---------- */
+function mtMC(at,area){
+  estado.escolha=null;
+  const L=['A','B','C','D','E'];
+  const d=document.createElement('div');d.className='opcoes';
+  at.opcoes.forEach((o,i)=>{
+    const b=document.createElement('div');b.className='opcao';
+    b.innerHTML=`<span class="letra">${L[i]}</span><span>${o}</span>`;
+    b.onclick=()=>{
+      if(respondido)return;som('clique');
+      [...d.children].forEach(c=>c.style.borderColor='#e5e7eb');
+      b.style.borderColor='#7c3aed';estado.escolha=i;
+    };
+    d.appendChild(b);
+  });
+  area.appendChild(d);
+  estado.check=()=>{
+    if(estado.escolha===null){balao('Escolha uma resposta! 🤔');return null}
+    const ok=estado.escolha===at.correta;
+    d.children[estado.escolha].classList.add(ok?'certa':'errada');
+    if(!ok)d.children[at.correta].classList.add('revela');
+    return ok;
+  };
+}
+
+/* ---------- campos numéricos ---------- */
+function mtInput(at,area){
+  const d=document.createElement('div');d.className='campos';
+  at.campos.forEach((c,i)=>{
+    const w=document.createElement('div');w.className='campo';
+    w.innerHTML=`<span>${c.rot}</span><input type="text" inputmode="numeric" id="in${i}" autocomplete="off">
+                 ${c.sufixo?'<span>'+c.sufixo+'</span>':''}`;
+    d.appendChild(w);
+  });
+  area.appendChild(d);
+  const dica=document.createElement('p');dica.className='mini';
+  dica.textContent='Dica: escreva só o número.';area.appendChild(dica);
+  // enter avança
+  d.querySelectorAll('input').forEach((inp,i,arr)=>{
+    inp.addEventListener('keydown',e=>{
+      if(e.key==='Enter'){ if(arr[i+1])arr[i+1].focus(); else verificar(); }
+    });
+  });
+  setTimeout(()=>{const f=d.querySelector('input');if(f)f.focus()},250);
+  estado.check=()=>{
+    let vazio=false,ok=true;
+    at.campos.forEach((c,i)=>{
+      const inp=$('in'+i), v=inp.value.replace(/[^0-9]/g,'');
+      if(v==='')vazio=true;
+      const certo = Number(v)===c.r;
+      inp.parentElement.classList.add(certo?'ok':'nok');
+      if(!certo){ok=false; inp.value=v; }
+    });
+    if(vazio){
+      at.campos.forEach((c,i)=>$('in'+i).parentElement.classList.remove('ok','nok'));
+      balao('Preencha tudo! ✍️');return null;
+    }
+    if(!ok){ // mostra as respostas certas
+      at.campos.forEach((c,i)=>{const inp=$('in'+i); if(Number(inp.value)!==c.r) inp.value=c.r;});
+    }
+    return ok;
+  };
+}
+
+/* ---------- classificar em baldes (arrastar e soltar) ---------- */
+function mtBaldes(at,area){
+  const fichasDiv=document.createElement('div');fichasDiv.className='fichas';
+  const baldesDiv=document.createElement('div');baldesDiv.className='baldes';
+  const ZONAS='.balde,.fichas';
+  const itens=at.itens.map((it,i)=>({...it,id:'f'+i}));
+  let sel=null;
+
+  function destinoDe(z){return z.classList.contains('balde')?z.querySelector('.dentro'):fichasDiv}
+  function mover(f,z){
+    const d=destinoDe(z);
+    if(f.parentElement===d){f.classList.remove('sel');sel=null;return}
+    d.appendChild(f);f.classList.remove('sel');sel=null;som('pulo');
+  }
+  itens.forEach(it=>{
+    const f=document.createElement('div');f.className='ficha';f.textContent=it.txt;
+    f.dataset.id=it.id;f.dataset.certo=it.b;
+    f.addEventListener('click',ev=>{
+      if(respondido)return;ev.stopPropagation();
+      if(sel===f){f.classList.remove('sel');sel=null;return}
+      if(sel)sel.classList.remove('sel');
+      f.classList.add('sel');sel=f;som('clique');
+    });
+    tornarArrastavel(f,ZONAS,mover);
+    fichasDiv.appendChild(f);
+  });
+  at.baldes.forEach(b=>{
+    const bd=document.createElement('div');bd.className='balde';bd.dataset.bid=b.id;
+    bd.innerHTML=`<h4>${b.label}</h4><div class="dentro"></div>`;
+    bd.addEventListener('click',()=>{
+      if(respondido)return;
+      if(!sel){balao('Pegue uma ficha primeiro! 👆');return}
+      mover(sel,bd);
+    });
+    baldesDiv.appendChild(bd);
+  });
+  fichasDiv.addEventListener('click',()=>{if(!respondido&&sel)mover(sel,fichasDiv)});
+
+  area.appendChild(fichasDiv);area.appendChild(baldesDiv);
+  const d=document.createElement('p');d.className='mini centro';
+  d.innerHTML='Arraste cada ficha para o balde certo — ou toque na ficha e depois no balde. Dá para trocar de balde quando quiser.';
+  area.appendChild(d);
+
+  estado.check=()=>{
+    const faltam=fichasDiv.querySelectorAll('.ficha').length;
+    if(faltam){balao('Faltam '+faltam+' ficha(s)! 🧐');return null}
+    let ok=true;
+    itens.forEach(it=>{
+      const el=baldesDiv.querySelector('.ficha[data-id="'+it.id+'"]');
+      const onde=el.closest('.balde').dataset.bid;
+      const certo=onde===it.b;
+      el.classList.add(certo?'ok':'nok');
+      if(!certo){
+        ok=false;
+        const alvo=baldesDiv.querySelector('.balde[data-bid="'+it.b+'"]');
+        setTimeout(()=>alvo.querySelector('.dentro').appendChild(el),550);
+      }
+    });
+    return ok;
+  };
+}
+
+/* ---------- ligar pares ---------- */
+function mtMatch(at,area){
+  const emb=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
+  const esq=emb(at.pares.map((p,i)=>({t:p.a,i})));
+  const dir=emb(at.pares.map((p,i)=>({t:p.b,i})));
+  const w=document.createElement('div');w.className='match';
+  const c1=document.createElement('div');c1.className='col';
+  const c2=document.createElement('div');c2.className='col';
+  let selE=null,feitos=0,errosM=0;
+  function faz(el,lista,outro){
+    lista.forEach(o=>{
+      const d=document.createElement('div');d.className='mitem';d.innerHTML=o.t;d.dataset.i=o.i;
+      d.onclick=()=>{
+        if(respondido||d.classList.contains('ok'))return;
+        som('clique');
+        if(el===c1){
+          c1.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel'));
+          d.classList.add('sel');selE=d;
+        }else{
+          if(!selE){balao('Escolha a divisão primeiro! 👈');return}
+          if(selE.dataset.i===d.dataset.i){
+            selE.classList.remove('sel');selE.classList.add('ok');d.classList.add('ok');
+            selE=null;feitos++;som('pulo');
+            if(feitos===at.pares.length){balao('Todos ligados! 🎉')}
+          }else{
+            d.classList.add('nok');errosM++;som('erro');
+            setTimeout(()=>d.classList.remove('nok'),400);
+          }
+        }
+      };
+      el.appendChild(d);
+    });
+  }
+  faz(c1,esq);faz(c2,dir);
+  w.appendChild(c1);w.appendChild(c2);area.appendChild(w);
+  const d=document.createElement('p');d.className='mini';
+  d.textContent='Toque num item da esquerda e depois no par dele na direita.';area.appendChild(d);
+  estado.check=()=>{
+    if(feitos<at.pares.length){balao('Ligue todos os pares! 🔗');return null}
+    return errosM===0;
+  };
+}
+
+/* ---------- reta numerada ---------- */
+function mtReta(at,area){
+  const box=document.createElement('div');box.className='reta-box';
+  const reta=document.createElement('div');reta.className='reta';
+  const max=at.total+1;
+  const pos=n=>(n/max)*100;
+  let h='<div class="linha"></div>';
+  for(let n=0;n<=at.total+1;n++)
+    h+=`<div class="tick" style="left:${pos(n)}%"><b></b><s>${n}</s></div>`;
+  h+=`<div class="kang" id="kang" style="left:${pos(at.total)}%">🦘</div>`;
+  reta.innerHTML=h;box.appendChild(reta);area.appendChild(box);
+
+  const ctrl=document.createElement('div');ctrl.className='reta-ctrl';
+  ctrl.innerHTML=`<button class="btn laranja" id="btnPulo">🦘 Pular ${at.passo} para trás</button>
+    <span class="contador" id="cont">Estou no ${at.total} · 0 pulos</span>
+    <button class="btn cinza" id="btnReset">↺</button>`;
+  area.appendChild(ctrl);
+
+  const campo=document.createElement('div');campo.className='campos';
+  campo.innerHTML=`<div class="campo"><span>${at.total} ÷ ${at.passo} =</span>
+    <input type="text" inputmode="numeric" id="in0" autocomplete="off"></div>`;
+  area.appendChild(campo);
+
+  let atual=at.total,pulos=0;
+  function upd(){$('cont').textContent=`Estou no ${atual} · ${pulos} pulo${pulos===1?'':'s'}`}
+  $('btnPulo').onclick=()=>{
+    if(atual<=0){balao('Já cheguei no zero! 🏁');return}
+    const de=atual;atual-=at.passo;pulos++;som('pulo');
+    $('kang').style.left=pos(Math.max(0,atual))+'%';
+    const a=document.createElement('div');a.className='arco';
+    a.style.left=pos(Math.max(0,atual))+'%';
+    a.style.width=(pos(de)-pos(Math.max(0,atual)))+'%';
+    a.innerHTML=`<em>${pulos}</em>`;reta.appendChild(a);
+    upd();
+    if(atual===0){balao('Chegou no zero! 🏁 '+pulos+' pulos!');$('in0').focus()}
+  };
+  $('btnReset').onclick=()=>{
+    atual=at.total;pulos=0;$('kang').style.left=pos(at.total)+'%';
+    reta.querySelectorAll('.arco').forEach(x=>x.remove());upd();
+  };
+  $('in0').addEventListener('keydown',e=>{if(e.key==='Enter')verificar()});
+  estado.check=()=>{
+    const v=$('in0').value.replace(/[^0-9]/g,'');
+    if(v===''){balao('Escreva o resultado! ✍️');return null}
+    const certo=Number(v)===at.total/at.passo;
+    $('in0').parentElement.classList.add(certo?'ok':'nok');
+    if(!certo)$('in0').value=at.total/at.passo;
+    return certo;
+  };
+}
+
+/* ---------- repartir objetos (arrastar e soltar) ---------- */
+function plural(p){
+  return /m$/i.test(p) ? p.slice(0,-1)+'ns' : (/[rszl]$/i.test(p) ? p+'es' : p+'s');
+}
+function mtReparte(at,area){
+  const pool=document.createElement('div');pool.className='pool';
+  const restam=document.createElement('p');restam.className='restam';
+  const cestas=document.createElement('div');cestas.className='cestas';
+  const alvo = at.porGrupo || (at.total/at.grupos);
+  const ZONAS='.cesta,.pool';
+  let sel=null, rodadas=0;
+
+  // as contagens são SEMPRE lidas da tela — nunca de um contador à parte
+  function atualizar(){
+    [...cestas.children].forEach(c=>{
+      c.querySelector('.cont').textContent=c.querySelector('.conteudo').children.length;
+    });
+    const n=pool.children.length;
+    const voltas=rodadas?` · rodadas dadas: <b>${rodadas}</b>`:'';
+    restam.innerHTML = (n
+      ? `Ainda faltam distribuir: ${n} de ${at.total} ${at.emoji}`
+      : `Todas as ${at.total} foram distribuídas! 🎉`)+voltas;
+  }
+  function destinoDe(zona){
+    return zona.classList.contains('cesta') ? zona.querySelector('.conteudo') : pool;
+  }
+  function mover(item,zona){
+    [...cestas.children].forEach(c=>c.classList.remove('certa','erradinha'));
+    const d=destinoDe(zona);
+    if(item.parentElement===d){item.classList.remove('sel');sel=null;return}
+    d.appendChild(item);
+    item.classList.remove('sel');sel=null;
+    som('pulo');atualizar();
+    if(!pool.children.length)balao('Tudo distribuído! 🎉');
+  }
+  function selecionar(item,ev){
+    if(ev)ev.stopPropagation();            // não deixa o toque "vazar" para o cesto
+    if(sel===item){item.classList.remove('sel');sel=null;return}
+    if(sel)sel.classList.remove('sel');
+    item.classList.add('sel');sel=item;som('clique');
+  }
+
+  for(let i=0;i<at.total;i++){
+    const s=document.createElement('span');s.className='item';s.textContent=at.emoji;
+    s.addEventListener('click',ev=>selecionar(s,ev));
+    tornarArrastavel(s,ZONAS,mover,true);
+    pool.appendChild(s);
+  }
+  for(let g=0;g<at.grupos;g++){
+    const c=document.createElement('div');c.className='cesta';
+    c.innerHTML=`<div class="rot">${at.rotulo} ${g+1}</div><div class="conteudo"></div><div class="cont">0</div>`;
+    c.addEventListener('click',()=>{
+      if(!sel){balao('Pegue um '+at.emoji+' primeiro! 👆');return}
+      mover(sel,c);
+    });
+    cestas.appendChild(c);
+  }
+  pool.addEventListener('click',()=>{
+    if(!sel)return;
+    mover(sel,pool);                        // devolve para o monte
+  });
+
+  area.appendChild(pool);area.appendChild(restam);area.appendChild(cestas);
+
+  const ctrl=document.createElement('div');ctrl.className='reta-ctrl';ctrl.style.marginTop='12px';
+  ctrl.innerHTML=`<button class="btn azul" id="btn1a1">🎁 Dar uma rodada</button>
+                  <button class="btn cinza" id="btnR2">↺ Recomeçar</button>`;
+  area.appendChild(ctrl);
+
+  const ajuda=document.createElement('p');ajuda.className='mini centro';
+  const UM=at.artigo||'um', SING=at.rotulo.toLowerCase(), PLUR=plural(SING);
+  ajuda.innerHTML=`Arraste cada ${at.emoji} para ${UM} ${SING} — ou toque nele e depois no destino.
+    Para devolver, arraste de volta para a caixa laranja.<br>
+    <b>Dica de quem sabe:</b> reparta <b>de 1 em 1</b>, dando um para cada ${SING} por vez,
+    até o monte acabar. O botão <b>Dar uma rodada</b> faz <i>uma</i> volta dessas para você ver o jeito certo.<br>
+    Depois de responder você pode continuar mexendo para entender melhor. 😉`;
+  area.appendChild(ajuda);
+
+  const campo=document.createElement('div');campo.className='campos';
+  campo.innerHTML=`<div class="campo"><span>${at.total} ÷ ${at.grupos} =</span>
+    <input type="text" inputmode="numeric" id="in0" autocomplete="off"></div>`;
+  area.appendChild(campo);
+
+  // UMA rodada por clique: 1 para cada cesto, do jeito que o livro ensina.
+  // Quem conta, decide quando parar e lê o resultado é a criança.
+  let timer=null;
+  $('btn1a1').onclick=()=>{
+    if(timer)return;
+    if(!pool.children.length){balao('O monte já está vazio! 🎉');return}
+    rodadas++;
+    let g=0;
+    timer=setInterval(()=>{
+      const it=pool.firstElementChild;
+      if(g>=at.grupos||!it){
+        clearInterval(timer);timer=null;atualizar();
+        if(!pool.children.length)balao('Acabaram! Agora conte. 🧐');
+        return;
+      }
+      it.classList.remove('sel');
+      cestas.children[g].querySelector('.conteudo').appendChild(it);
+      sel=null;som('pulo');atualizar();g++;
+    },170);
+  };
+  $('btnR2').onclick=()=>{
+    if(timer){clearInterval(timer);timer=null}
+    cestas.querySelectorAll('.item').forEach(x=>{x.classList.remove('sel');pool.appendChild(x)});
+    sel=null;rodadas=0;atualizar();
+  };
+  $('in0').addEventListener('keydown',e=>{if(e.key==='Enter')verificar()});
+  atualizar();
+
+  estado.check=()=>{
+    const cestasArr=[...cestas.children];
+    cestasArr.forEach(c=>c.classList.remove('certa','erradinha'));
+
+    // 1º) a repartição precisa estar terminada
+    const sobrando=pool.children.length;
+    if(sobrando){
+      balao('Ainda faltam '+sobrando+' no monte! 🧐');
+      return null;
+    }
+    const v=$('in0').value.replace(/[^0-9]/g,'');
+    if(v===''){balao('Escreva quantos ficaram em cada um! ✍️');return null}
+
+    const contagens=cestasArr.map(c=>c.querySelector('.conteudo').children.length);
+    const iguais=contagens.every(n=>n===alvo);
+    const numeroOk=Number(v)===alvo;
+
+    $('in0').parentElement.classList.add(numeroOk?'ok':'nok');
+    if(!numeroOk)$('in0').value=alvo;
+
+    // 2º) os grupos precisam estar iguais — é disso que a atividade trata
+    if(!iguais){
+      cestasArr.forEach((c,i)=>c.classList.add(contagens[i]===alvo?'certa':'erradinha'));
+      estado.aviso='👀 <b>Olha '+(UM==='uma'?'as ':'os ')+PLUR+':</b> ficaram com <b>'+contagens.join(', ')+
+        '</b>. Repartir igualmente é deixar a <b>mesma quantidade</b> em cada '+UM+' — '+alvo+' em cada!'+
+        (numeroOk?' Você escreveu o número certo, mas a repartição na tela ficou desigual. 🤔':'');
+      return false;
+    }
+    cestasArr.forEach(c=>c.classList.add('certa'));
+    return numeroOk;
+  };
+}
+
+/* ---------- cruzadinha ---------- */
+function mtCruz(at,area){
+  const w=document.createElement('div');w.className='cruz-wrap';
+  at.blocos.forEach((bl,bi)=>{
+    const col=document.createElement('div');col.style.textAlign='center';
+    let h=`<h3 style="margin:0 0 8px;color:#ec4899">${bl.titulo}</h3><div class="cruz">`;
+    bl.grade.forEach((linha,r)=>linha.forEach((v,c)=>{
+      h+=`<div class="cel" id="c${bi}-${r}-${c}">
+            ${bl.marcas[r][c]?'<small>'+bl.marcas[r][c]+'</small>':''}
+            <input type="text" inputmode="numeric" maxlength="1" data-b="${bi}" data-r="${r}" data-c="${c}">
+          </div>`;
+    }));
+    h+=`</div><div class="dicas">${bl.dicas.join('<br>')}</div>`;
+    col.innerHTML=h;w.appendChild(col);
+  });
+  area.appendChild(w);
+  const d=document.createElement('p');d.className='mini centro';
+  d.innerHTML='Um algarismo por quadradinho. Ex.: se a resposta for 12, o 1 vai no primeiro quadrado e o 2 no segundo.';
+  area.appendChild(d);
+  // auto-avanço
+  const inps=[...area.querySelectorAll('.cruz input')];
+  inps.forEach((inp,i)=>{
+    inp.addEventListener('input',()=>{
+      inp.value=inp.value.replace(/[^0-9]/g,'');
+      if(inp.value&&inps[i+1])inps[i+1].focus();
+    });
+  });
+  setTimeout(()=>inps[0]&&inps[0].focus(),250);
+  estado.check=()=>{
+    let vazio=false,ok=true;
+    inps.forEach(inp=>{
+      const {b,r,c}=inp.dataset;
+      if(inp.value==='')vazio=true;
+      const certo=inp.value===at.blocos[b].grade[r][c];
+      inp.parentElement.classList.add(certo?'ok':'nok');
+      if(!certo)ok=false;
+    });
+    if(vazio){inps.forEach(i=>i.parentElement.classList.remove('ok','nok'));balao('Preencha todos! ✍️');return null}
+    if(!ok)inps.forEach(inp=>{const {b,r,c}=inp.dataset;inp.value=at.blocos[b].grade[r][c]});
+    return ok;
+  };
+}
+
+/* ---------- adivinhação ---------- */
+function mtAdiv(at,area){
+  const e=document.createElement('div');e.className='enigma';
+  e.innerHTML=`<span class="bola">${at.bola}</span>${pers(at.enigma)}`;
+  area.appendChild(e);
+  const campo=document.createElement('div');campo.className='campos';campo.style.justifyContent='center';
+  campo.innerHTML=`<div class="campo"><span>Eu sou o número</span>
+    <input type="text" inputmode="numeric" id="in0" autocomplete="off"></div>`;
+  area.appendChild(campo);
+  const bt=document.createElement('div');bt.className='centro';bt.style.marginTop='10px';
+  bt.innerHTML='<button class="btn cinza" id="btnPista">💡 Quero uma pista</button>';
+  area.appendChild(bt);
+  const pista=document.createElement('div');pista.className='contexto esconde';
+  pista.style.marginTop='10px';pista.innerHTML='💡 '+pers(at.pista);area.appendChild(pista);
+  $('btnPista').onclick=()=>{pista.classList.remove('esconde');som('clique');estado.usouPista=true};
+  $('in0').addEventListener('keydown',ev=>{if(ev.key==='Enter')verificar()});
+  setTimeout(()=>$('in0').focus(),250);
+  estado.check=()=>{
+    const v=$('in0').value.replace(/[^0-9]/g,'');
+    if(v===''){balao('Arrisque um número! 🔮');return null}
+    const certo=Number(v)===at.r;
+    $('in0').parentElement.classList.add(certo?'ok':'nok');
+    if(!certo)$('in0').value=at.r;
+    return certo;
+  };
+}
+
+/* =========================================================
+   VERIFICAR / AVANÇAR
+   ========================================================= */
+const ELOGIOS=['Isso, {n}! 🎉','Mandou bem! 🌟','Você é fera! 💪','Perfeito! 🏆',
+               'Arrasou! 🚀','Show de bola! ⚽','Cabeça de matemático! 🧠','Boa, {n}! 🎯'];
+const ANIMOS=['Quase lá! 💛','Opa, olha só como é 👀','Sem problema, vamos entender! 🤓','Errar faz parte! 💪'];
+
+function verificar(){
+  if(respondido)return;
+  const r=estado.check();
+  if(r===null)return;
+  respondido=true;acertouEssa=r;
+  const at=FASES[faseAtual].ats[idx];
+  const fb=$('feedback');
+  if(r){
+    som('ok');confete(60);
+    S.xp+=estado.usouPista?10:20;S.acertos++;S.seq++;
+    if(S.seq>S.melhorSeq)S.melhorSeq=S.seq;
+    if(S.seq>0&&S.seq%5===0){balao('🔥 '+S.seq+' seguidas!');confete(120)}
+    fb.className='feedback bom show';
+    fb.innerHTML=`<span class="chefe">🎉</span><b>${pers(ELOGIOS[(Math.random()*ELOGIOS.length)|0])}</b><br>${pers(at.explica)}`;
+  }else{
+    som('erro');errosFase++;S.erros++;S.seq=0;
+    fb.className='feedback ruim show';
+    fb.innerHTML=`<span class="chefe">🤓</span><b>${ANIMOS[(Math.random()*ANIMOS.length)|0]}</b><br>${estado.aviso?estado.aviso+'<br><br>':''}${pers(at.explica)}
+      <br><span class="mini">Leia com calma — na prova essa mesma ideia vai aparecer!</span>`;
+  }
+  salvar();atualizarHUD();
+  $('btnVerificar').classList.add('esconde');
+  $('btnProxima').classList.remove('esconde');
+  $('btnProxima').textContent = (idx===FASES[faseAtual].ats.length-1)?'TERMINAR FASE 🏁':'CONTINUAR ➡️';
+  fb.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function proxima(){
+  som('clique');
+  if(idx<FASES[faseAtual].ats.length-1){idx++;renderAt();return}
+  // fim de fase
+  const est = errosFase===0?3:(errosFase===1?2:1);
+  if(!S.estrelas[faseAtual]||S.estrelas[faseAtual]<est)S.estrelas[faseAtual]=est;
+  S.xp+=est*25;salvar();atualizarHUD();
+  som('fase');confete(200);
+  mostrar('fimFase');
+  $('fimEstrelas').innerHTML=[0,1,2].map(i=>
+    `<span style="animation-delay:${i*.22}s">${i<est?'⭐':'☆'}</span>`).join('');
+  $('fimTitulo').textContent = est===3?'FASE PERFEITA! 🏆' : est===2?'Muito bem! 🌟' : 'Fase concluída! 👏';
+  $('fimTexto').innerHTML = est===3
+    ? `${nome}, você acertou <b>tudo de primeira</b> na fase ${faseAtual+1}! +${est*25} XP 🎁`
+    : `Você completou a fase ${faseAtual+1} com <b>${errosFase} escorregada${errosFase===1?'':'s'}</b>. +${est*25} XP 🎁<br>
+       <span class="mini">Jogue de novo para tentar as 3 estrelas!</span>`;
+  $('fimDica').innerHTML='🧠 <b>Para lembrar:</b> '+FASES[faseAtual].dica;
+  $('btnProxFase').style.display = (faseAtual<FASES.length-1)?'inline-block':'none';
+  if(faseAtual===FASES.length-1){
+    setTimeout(()=>{
+      mostrar('fim');confete(300);som('fase');
+      const tot=Object.values(S.estrelas).reduce((a,b)=>a+b,0);
+      $('fimPlacar').innerHTML=`⭐ <b>${S.xp} XP</b> · ${tot} de ${FASES.length*3} estrelas<br>
+        ✅ ${S.acertos} acertos · 🔥 melhor sequência: ${S.melhorSeq}`;
+    },2600);
+  }
+}
+function proximaFase(){ if(faseAtual<FASES.length-1) abrirFase(faseAtual+1); else irMapa(); }
+
+/* =========================================================
+   INÍCIO
+   ========================================================= */
+listarJogadores();
+$('campoNome').addEventListener('keydown',e=>{if(e.key==='Enter')entrarNovo()});
+setTimeout(()=>$('campoNome').focus(),300);
+atualizarHUD();
+</script>
+</body>
+</html>
